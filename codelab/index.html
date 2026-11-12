@@ -197,8 +197,15 @@ gcloud services enable \
   --quiet</pre>
         <img src="../assets/step3_enable_apis.jpg" alt="Enabling APIs in Cloud Shell" />
 
-        <h3>Launch Google Antigravity CLI</h3>
-        <pre>agy --help
+        <h3>Create Your Own Fresh Workspace &amp; Launch Antigravity CLI</h3>
+        <pre>mkdir signbridge-sovereign-rag
+cd signbridge-sovereign-rag
+git init -b main
+
+# Install Google Antigravity CLI (if not pre-installed)
+curl -fsSL https://antigravity.google/cli/install.sh | bash
+
+# Launch Antigravity in your empty directory
 agy</pre>
         <div class="callout tip">
           <strong>Pro Tip:</strong> Inside <code>agy</code>, run <code>/help</code> to view interactive agent commands like <code>/grill-me</code> and <code>/plan</code>.
@@ -229,14 +236,20 @@ Interview me on authentication boundaries, cold-start mitigation, and BigQuery s
 
       <!-- STEP 4 -->
       <section class="step-card" data-title="Generate the RAG application" data-mins="24">
-        <h2>5. Generate the RAG application</h2>
-        <img src="../assets/hero_signbridge_sovereign_rag.jpg" alt="Robina Mirbahar — SignBridge Sovereign RAG" />
-        <pre>git clone https://github.com/RobinaMirbahar/signbridge-sovereign-rag-agy.git
-cd signbridge-sovereign-rag-agy
-chmod +x setup_env.sh embedding_model/cloud_run.sh llm/cloud_run.sh orchestration/cloud_run.sh cleanup.sh</pre>
+        <h2>5. Generate the RAG application from scratch</h2>
+        <img src="../assets/hero_signbridge_sovereign_rag.jpg" alt="SignBridge Sovereign RAG" />
+        <p>Approve the Implementation Plan inside <code>agy</code> so Antigravity generates your entire codebase from scratch in your own workspace:</p>
+        <pre>Proceed with the implementation plan and scaffold the complete SignBridge Sovereign Sign-Language RAG repository from scratch in this directory:
+- vector_store/: BigQuery VECTOR_SEARCH (COSINE) DDL, init_db.py &amp; ASL/PSL broadcast/corporate sign lexicon
+- embedding_model/: Private Cloud Run service serving EmbeddingGemma 2 (768-d)
+- llm/: Private Cloud Run service serving open-weights Gemma 4 (NVIDIA L4 GPU or 8-vCPU fallback)
+- orchestration/: FastAPI backend + colorful Side-by-Side Ungrounded vs. Grounded Web UI
+- tests/ &amp; cleanup.sh</pre>
 
-        <h3>Run Automated Verification Tests</h3>
-        <pre>uv run --with pytest --with fastapi --with httpx pytest tests/test_signbridge.py -v</pre>
+        <h3>Verify &amp; Commit to Your Own Repo</h3>
+        <pre>chmod +x embedding_model/cloud_run.sh llm/cloud_run.sh orchestration/cloud_run.sh cleanup.sh
+pytest tests/ -v
+git add . &amp;&amp; git commit -m "Generate SignBridge Sovereign RAG from scratch with Antigravity"</pre>
       </section>
 
       <!-- STEP 5 -->

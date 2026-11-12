@@ -123,13 +123,23 @@ gcloud services enable \
 
 ![Enabling Sovereign RAG APIs in Cloud Shell](img/step3_enable_apis.jpg)
 
-### Install the Google Cloud Developer Plugin & Launch Antigravity CLI
-Verify that **Antigravity CLI (`agy`)** is ready in your shell environment and start an interactive session:
+### Create Your Own Fresh Project Repository & Launch Antigravity CLI
+Instead of cloning pre-written code, you will build your **own Sovereign RAG repository from scratch** using the **Google Antigravity CLI (`agy`)**! Create a clean directory, initialize Git, install `agy` (if not already pre-installed in Cloud Shell), and launch the interactive agent:
 
 ```bash
-agy --help
+mkdir signbridge-sovereign-rag
+cd signbridge-sovereign-rag
+git init -b main
+
+# Install Google Antigravity CLI and ensure ~/.local/bin is on PATH
+curl -fsSL https://antigravity.google/cli/install.sh | bash
+export PATH="$HOME/.local/bin:$PATH"
+
+# Launch Antigravity inside your empty workspace
 agy
 ```
+
+![Initializing Your Fresh SignBridge Git Workspace in Cloud Shell](img/step3_mkdir_git_init.jpg)
 
 > aside positive
 > **Tip:** Inside the `agy` terminal interface, you can type `/help` at any time to inspect built-in slash commands such as `/grill-me`, `/plan`, and `/compact`.
@@ -181,16 +191,21 @@ Duration: 6
 
 ![SignBridge Sovereign RAG Hero](img/hero_signbridge_sovereign_rag.jpg)
 
-Clone or generate the `signbridge-sovereign-rag-agy` workspace and explore the four core modules:
+Once you are happy with the Implementation Plan produced during `/grill-me`, instruct **Antigravity (`agy`)** to generate your complete application **from scratch** inside your `signbridge-sovereign-rag` folder:
 
-```bash
-git clone https://github.com/RobinaMirbahar/signbridge-sovereign-rag-agy.git
-cd signbridge-sovereign-rag-agy
-chmod +x setup_env.sh embedding_model/cloud_run.sh llm/cloud_run.sh orchestration/cloud_run.sh cleanup.sh
+```text
+Proceed with the implementation plan and scaffold the complete SignBridge Sovereign Sign-Language RAG repository from scratch in this directory:
+1. vector_store/: BigQuery Vector Search DDL, COSINE VECTOR_SEARCH query helper, init_db.py, and an 8-entry ASL & PSL broadcast/corporate sign lexicon JSON (covering breaking flood news tickers, embargoed Q3 corporate earnings & M&A town halls, 150 bps financial TV desks, "off the record" press idioms, and clinical/ADA protocols).
+2. embedding_model/: Cloud Run Dockerfile + FastAPI service baking in EmbeddingGemma 2 via Ollama (/embed returning 768-d vectors) + cloud_run.sh (--no-allow-unauthenticated).
+3. llm/: Cloud Run Dockerfile baking in open-weights Gemma 4 via Ollama + cloud_run.sh that checks regional NVIDIA_L4 GPU quota and deploys with --gpu=1 --gpu-type=nvidia-l4 (or falls back to --cpu=8 --memory=16Gi when GPU quota is 0).
+4. orchestration/: FastAPI backend (/api/compare, /api/corpus, /health) + colorful Side-by-Side Web UI comparing Baseline Ungrounded LLM vs. Sovereign BigQuery-Grounded SignBridge + root Dockerfile + cloud_run.sh.
+5. tests/test_signbridge.py (automated pytest suite) and cleanup.sh for tearing down Cloud Run & BigQuery resources.
 ```
 
-### Explore the Generated Codebase
-1. **Broadcast & Corporate Sign Corpus (`vector_store/sign_lexicon_corpus.json`):** Contains curated ASL & PSL entries covering breaking flood tickers (`SL-NEWS-001`), embargoed Q3 earnings & M&A town halls (`SL-CORP-002`), Central Bank 150 bps rate cuts (`SL-MEDIA-003`), press-room *"off the record"* idioms (`SL-MEDIA-004`), and HIPAA/ADA protocols.
+### Explore Your Newly Generated Codebase
+Verify the modular directory tree Antigravity created in your workspace:
+
+1. **Broadcast & Corporate Sign Corpus (`vector_store/sign_lexicon_corpus.json`):** Curated ASL & PSL entries covering breaking flood tickers, embargoed Q3 earnings & M&A town halls, Central Bank `150 bps` rate cuts, and press-room *"off the record"* idioms.
 2. **BigQuery Vector Search Query (`vector_store/init_db.py`):** Uses native `VECTOR_SEARCH` with `COSINE` distance:
    ```sql
    SELECT base.doc_id, base.verified_gloss, base.non_manual_markers, distance
@@ -203,13 +218,18 @@ chmod +x setup_env.sh embedding_model/cloud_run.sh llm/cloud_run.sh orchestratio
    )
    ORDER BY distance ASC;
    ```
-3. **Orchestrator (`orchestration/app.py`):** Queries both an ungrounded prompt and a BigQuery-grounded prompt in parallel so producers and interpreters can visually verify why grounding prevents broadcast errors.
+3. **Orchestrator (`orchestration/app.py`):** Queries both an ungrounded prompt and a BigQuery-grounded prompt in parallel so broadcast producers and interpreters can visually verify why grounding prevents live-air errors.
 
-### Run Local Automated Verification First
-Before deploying to Cloud Run, run the automated `pytest` verification suite:
+### Run Automated Verification & Optional Push to Your Own GitHub Repo
+Run `pytest` locally in Cloud Shell to verify every endpoint before deploying—and optionally push your newly generated project to **your own GitHub account**:
 
 ```bash
-uv run --with pytest --with fastapi --with httpx pytest tests/test_signbridge.py -v
+chmod +x embedding_model/cloud_run.sh llm/cloud_run.sh orchestration/cloud_run.sh cleanup.sh
+pytest tests/ -v
+
+# Optional: save & publish your own generated repository to GitHub
+git add .
+git commit -m "Build SignBridge Sovereign Sign-Language RAG from scratch with Antigravity"
 ```
 
 ---
