@@ -162,6 +162,10 @@ Once signed in, choose your preferred terminal color scheme (for example `dark` 
 
 ![Choosing Your Color Scheme in Antigravity CLI](img/step3_agy_theme_setup.jpg)
 
+When prompted (`Do you trust the contents of this project?`), keep **`> Yes, I trust this folder`** selected and press **Enter**:
+
+![Trusting Your SignBridge Workspace in Antigravity CLI](img/step3_agy_trust_workspace.png)
+
 > aside positive
 > **Tip:** Inside the `agy` terminal interface, you can type `/help` at any time to inspect built-in slash commands such as `/grill-me`, `/plan`, and `/compact`.
 
