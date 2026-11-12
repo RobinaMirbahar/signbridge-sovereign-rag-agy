@@ -158,6 +158,10 @@ Copy the verification code from the **Google Antigravity** callback page, return
 
 ![Copying the Google Antigravity Verification Code](img/step3_agy_oauth_callback.png)
 
+Once signed in, choose your preferred terminal color scheme (for example `dark` or `tokyo night`), navigate down to **`[Next]`**, and press **Enter** to open the interactive `agy` workspace prompt:
+
+![Choosing Your Color Scheme in Antigravity CLI](img/step3_agy_theme_setup.jpg)
+
 > aside positive
 > **Tip:** Inside the `agy` terminal interface, you can type `/help` at any time to inspect built-in slash commands such as `/grill-me`, `/plan`, and `/compact`.
 
