@@ -299,7 +299,10 @@ git commit -m &#34;Build SignBridge Sovereign Sign-Language RAG from scratch wit
       </google-codelab-step>
     
       <google-codelab-step label="Deploy and Verify the Application" duration="10">
-        <p>Now deploy the complete Sovereign Sign-Language RAG stack onto Google Cloud Run!</p>
+        <p>Now deploy the complete Sovereign Sign-Language RAG stack onto Google Cloud Run! You can either ask <strong>Antigravity (</strong></p>
+<p><strong><code>agy</code></strong></p>
+<p><strong>)</strong> to execute Phase B directly in your active session—where Antigravity&#39;s built-in <strong>human-in-the-loop IAM safety guardrails</strong> pause for your explicit confirmation before modifying project-level IAM bindings (<code>signbridge-ui-sa</code>)—or run the generated shell scripts step-by-step:</p>
+<p class="image-container"><img alt="Antigravity CLI Human-in-the-Loop IAM Safety Guardrail During Cloud Run Deployment" src="img\\c33c4c03ea82a4c0.jpg"></p>
 <h2 is-upgraded>1. Initialize Project &amp; APIs</h2>
 <pre><code language="language-bash" class="language-bash">source ./setup_env.sh
 </code></pre>
