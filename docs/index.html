@@ -218,6 +218,8 @@ Interview me on authentication boundaries, cold-start mitigation, and BigQuery s
 <p>During architecture planning, Antigravity automatically invokes the <strong>Google Cloud Developer Knowledge MCP server</strong> (<code>google-cloud-developer_developer-knowledge/search_documents</code>) to verify live Cloud Run GPU and BigQuery Vector Search documentation! Select <strong><code>2. Yes, and always allow tool ... in this conversation</code></strong> (or press <strong>Enter</strong> on <strong><code>1. Yes, allow tool call</code></strong>):</p>
 <p class="image-container"><img alt="Allowing the Google Cloud Developer Knowledge MCP Tool in Antigravity CLI" src="img\\6402ed10b5e564c1.jpg"></p>
 <h2 is-upgraded>Interactive Q&amp;A &amp; Reviewing the Implementation Plan</h2>
+<p><code>/grill-me</code> launches an interactive multiple-choice architecture interview right inside your Cloud Shell terminal! For example, on Question 1 (<em>&#34;How should human users authenticate at the Public FastAPI Cloud Run Web UI perimeter, given that real pre-broadcast scripts are embargoed?&#34;</em>), you can choose <strong><code>1. (Recommended)</code></strong> or <strong><code>4. Fully open public Web UI (--allow-unauthenticated, no user login) — enforce auth strictly at the private Cloud Run and BigQuery backend boundary</code></strong> for your Codelab demo:</p>
+<p class="image-container"><img alt="Interactive /grill-me Architecture Question UI in Antigravity CLI" src="img\\23d9145669006dee.jpg"></p>
 <p>Answer Antigravity&#39;s clarifying questions:</p>
 <ul>
 <li><strong>Model Weights:</strong> Pre-bake <code>embeddinggemma</code> and <code>gemma4:e4b</code> inside the container build step so runtime containers need zero outbound internet downloads.</li>

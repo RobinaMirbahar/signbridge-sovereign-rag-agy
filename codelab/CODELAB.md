@@ -217,6 +217,10 @@ During architecture planning, Antigravity automatically invokes the **Google Clo
 ![Allowing the Google Cloud Developer Knowledge MCP Tool in Antigravity CLI](img/step4_mcp_developer_knowledge.jpg)
 
 ### Interactive Q&A & Reviewing the Implementation Plan
+`/grill-me` launches an interactive multiple-choice architecture interview right inside your Cloud Shell terminal! For example, on Question 1 (*"How should human users authenticate at the Public FastAPI Cloud Run Web UI perimeter, given that real pre-broadcast scripts are embargoed?"*), you can choose **`1. (Recommended)`** or **`4. Fully open public Web UI (--allow-unauthenticated, no user login) — enforce auth strictly at the private Cloud Run and BigQuery backend boundary`** for your Codelab demo:
+
+![Interactive /grill-me Architecture Question UI in Antigravity CLI](img/step4_grill_me_question1.jpg)
+
 Answer Antigravity's clarifying questions:
 * **Model Weights:** Pre-bake `embeddinggemma` and `gemma4:e4b` inside the container build step so runtime containers need zero outbound internet downloads.
 * **Service-to-Service Security:** Deploy `embedding_model` and `llm` with `--no-allow-unauthenticated`; only the `orchestration` UI service is publicly reachable.
