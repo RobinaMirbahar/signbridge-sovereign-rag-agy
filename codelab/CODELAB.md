@@ -85,17 +85,26 @@ signbridge-sovereign-rag-agy/
 Duration: 5
 
 ### Open Cloud Shell
-1. Open the [Google Cloud Console](https://console.cloud.google.com/).
-2. Click **Activate Cloud Shell** in the top-right toolbar.
+1. Open the [Google Cloud Console](https://console.cloud.google.com/) and confirm your active project ID is selected:
+
+![Google Cloud Console Welcome Screen](img/step3_gcp_welcome.png)
+
+2. Click **Activate Cloud Shell** in the top-right toolbar and wait a few seconds while Cloud Shell provisions your machine:
+
+![Provisioning Google Cloud Shell](img/step3_cloudshell_provisioning.png)
+
+3. When prompted, click **Authorize** to grant Cloud Shell permission to run `gcloud` API calls:
+
+![Authorize Google Cloud Shell](img/step3_cloudshell_authorize.png)
 
 ### Set Your Project and Enable Required APIs
-Run the following commands in Cloud Shell to configure your active project and enable Cloud Run, Cloud Build, Artifact Registry, and BigQuery:
+In Cloud Shell, `${GOOGLE_CLOUD_PROJECT}` automatically holds your active project ID (or replace it with your own project ID). Run the following commands to configure your session and enable Cloud Run, Cloud Build, Artifact Registry, and BigQuery:
 
 ```bash
-export PROJECT_ID="YOUR_PROJECT_ID"
+export PROJECT_ID="${GOOGLE_CLOUD_PROJECT}"
 export REGION="europe-west1"
 
-gcloud config set project "${PROJECT_ID}"
+gcloud config set project "${PROJECT_ID}" --quiet
 
 gcloud services enable \
   run.googleapis.com \
@@ -104,7 +113,8 @@ gcloud services enable \
   bigquery.googleapis.com \
   compute.googleapis.com \
   iam.googleapis.com \
-  --project="${PROJECT_ID}"
+  --project="${PROJECT_ID}" \
+  --quiet
 ```
 
 ### Install the Google Cloud Developer Plugin & Launch Antigravity CLI

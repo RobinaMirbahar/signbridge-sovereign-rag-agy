@@ -173,11 +173,15 @@
       <!-- STEP 2 -->
       <section class="step-card" data-title="Set up Cloud Shell and Antigravity CLI" data-mins="35">
         <h2>3. Set up Cloud Shell and Antigravity CLI</h2>
-        <h3>Open Cloud Shell &amp; Enable Required APIs</h3>
-        <pre>export PROJECT_ID="YOUR_PROJECT_ID"
+        <h3>Open Cloud Shell &amp; Authorize</h3>
+        <img src="../assets/step3_gcp_welcome.png" alt="Google Cloud Console Project Dashboard" />
+        <img src="../assets/step3_cloudshell_provisioning.png" alt="Provisioning Cloud Shell" />
+        <img src="../assets/step3_cloudshell_authorize.png" alt="Authorize Cloud Shell" />
+        <h3>Set Your Active Project &amp; Enable Required APIs</h3>
+        <pre>export PROJECT_ID="${GOOGLE_CLOUD_PROJECT}"
 export REGION="europe-west1"
 
-gcloud config set project "${PROJECT_ID}"
+gcloud config set project "${PROJECT_ID}" --quiet
 
 gcloud services enable \
   run.googleapis.com \
@@ -186,7 +190,8 @@ gcloud services enable \
   bigquery.googleapis.com \
   compute.googleapis.com \
   iam.googleapis.com \
-  --project="${PROJECT_ID}"</pre>
+  --project="${PROJECT_ID}" \
+  --quiet</pre>
 
         <h3>Launch Google Antigravity CLI</h3>
         <pre>agy --help

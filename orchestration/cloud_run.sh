@@ -18,12 +18,12 @@ cd "$(dirname "$0")/.."
 echo "Deploying ${SERVICE_NAME} to Cloud Run (${REGION})..."
 gcloud run deploy "${SERVICE_NAME}" \
   --source=. \
-  --dockerfile=orchestration/Dockerfile \
   --project="${PROJECT_ID}" \
   --region="${REGION}" \
   --cpu=2 \
   --memory=4Gi \
   --allow-unauthenticated \
+  --quiet \
   --set-env-vars="PROJECT_ID=${PROJECT_ID},REGION=${REGION},BQ_DATASET=${BQ_DATASET},BQ_TABLE=${BQ_TABLE},USE_BIGQUERY_VECTOR_SEARCH=true,EMBEDDING_SERVICE_URL=${EMBEDDING_URL},LLM_SERVICE_URL=${LLM_URL}" \
   --port=8080
 

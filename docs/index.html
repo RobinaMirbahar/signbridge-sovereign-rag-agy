@@ -122,15 +122,23 @@
       <google-codelab-step label="Set up Cloud Shell and Antigravity CLI" duration="5">
         <h2 is-upgraded>Open Cloud Shell</h2>
 <ol type="1">
-<li>Open the <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a>.</li>
-<li>Click <strong>Activate Cloud Shell</strong> in the top-right toolbar.</li>
+<li>Open the <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a> and confirm your active project ID is selected:</li>
 </ol>
+<p class="image-container"><img alt="Google Cloud Console Welcome Screen" src="img\\30e498bf73665b19.png"></p>
+<ol type="1" start="2">
+<li>Click <strong>Activate Cloud Shell</strong> in the top-right toolbar and wait a few seconds while Cloud Shell provisions your machine:</li>
+</ol>
+<p class="image-container"><img alt="Provisioning Google Cloud Shell" src="img\\4209dcc6b96276b4.png"></p>
+<ol type="1" start="3">
+<li>When prompted, click <strong>Authorize</strong> to grant Cloud Shell permission to run <code>gcloud</code> API calls:</li>
+</ol>
+<p class="image-container"><img alt="Authorize Google Cloud Shell" src="img\\dcba2f68b78dfcbc.png"></p>
 <h2 is-upgraded>Set Your Project and Enable Required APIs</h2>
-<p>Run the following commands in Cloud Shell to configure your active project and enable Cloud Run, Cloud Build, Artifact Registry, and BigQuery:</p>
-<pre><code language="language-bash" class="language-bash">export PROJECT_ID=&#34;YOUR_PROJECT_ID&#34;
+<p>In Cloud Shell, <code>${GOOGLE_CLOUD_PROJECT}</code> automatically holds your active project ID (or replace it with your own project ID). Run the following commands to configure your session and enable Cloud Run, Cloud Build, Artifact Registry, and BigQuery:</p>
+<pre><code language="language-bash" class="language-bash">export PROJECT_ID=&#34;${GOOGLE_CLOUD_PROJECT}&#34;
 export REGION=&#34;europe-west1&#34;
 
-gcloud config set project &#34;${PROJECT_ID}&#34;
+gcloud config set project &#34;${PROJECT_ID}&#34; --quiet
 
 gcloud services enable \
   run.googleapis.com \
@@ -139,7 +147,8 @@ gcloud services enable \
   bigquery.googleapis.com \
   compute.googleapis.com \
   iam.googleapis.com \
-  --project=&#34;${PROJECT_ID}&#34;
+  --project=&#34;${PROJECT_ID}&#34; \
+  --quiet
 </code></pre>
 <h2 is-upgraded>Install the Google Cloud Developer Plugin &amp; Launch Antigravity CLI</h2>
 <p>Verify that <strong>Antigravity CLI (</strong></p>
