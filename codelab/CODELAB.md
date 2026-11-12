@@ -262,6 +262,10 @@ Answer Antigravity's clarifying questions:
 * **Service-to-Service Security:** Deploy `embedding_model` and `llm` with `--no-allow-unauthenticated`; only the `orchestration` UI service is publicly reachable.
 * **Chunk Structure:** Store structured columns (`verified_gloss`, `handshape`, `non_manual_markers`, `privacy_tier`) alongside `embedding ARRAY<FLOAT64>` in BigQuery so retrieved citations are deterministic and auditable.
 
+Once all `/grill-me` branches are answered, Antigravity compiles every architectural decision into a structured **`implementation_plan.md` artifact** (`1 artifact · /artifact to review`) and asks for your confirmation before writing code or provisioning GCP resources:
+
+![Antigravity CLI Compiling Your Sovereign RAG implementation_plan.md Artifact](img/step4_implementation_plan_ready.jpg)
+
 ---
 
 <!-- ------------------------ -->
