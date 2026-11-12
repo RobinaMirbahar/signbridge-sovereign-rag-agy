@@ -285,6 +285,8 @@ Proceed with the implementation plan and scaffold the complete SignBridge Sovere
 5. tests/test_signbridge.py (automated pytest suite) and cleanup.sh for tearing down Cloud Run & BigQuery resources.
 ```
 
+![Approving Phase A Local Scaffolding and Phase B Live GCP Deployment in Antigravity CLI](img/step5_scaffolding_generating.jpg)
+
 ### Explore Your Newly Generated Codebase
 Verify the modular directory tree Antigravity created in your workspace:
 
