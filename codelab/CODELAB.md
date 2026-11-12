@@ -380,6 +380,10 @@ Open the live `https://signbridge-ui-...run.app` URL in your browser to launch t
 
 ![Live SignBridge Sovereign Sign-Language RAG Web UI on Google Cloud Run](img/step7_live_web_ui_dashboard.jpg)
 
+Switch to **`PSL · Pakistan Sign Language`** (or keep `ASL`) and click **`Run Side-by-Side Comparison`**—in ~1.4 seconds, `EmbeddingGemma 2` + **BigQuery `VECTOR_SEARCH` (`COSINE` distance)** retrieves the exact sovereign broadcast lexicon cards (`[PSL-BN-004]`, `[PSL-EM-002]`, `[PSL-EM-012]`, `[PSL-WX-001]`) complete with Roman-Urdu PSL glosses, `[NMM]` facial grammar, and 5-parameter handshape specifications:
+
+![Live BigQuery VECTOR_SEARCH PSL Ground Truth Lexicon Cards on Cloud Run](img/step7_psl_bigquery_ground_truth.jpg)
+
 ### Test These 4 Broadcast & Corporate Scenarios
 1. **📺 Breaking News Flood Ticker:** Click *"Breaking News Flood Ticker"*. Notice how the Ungrounded LLM outputs literal word-for-word English (`FLASH FLOOD...`), whereas **SignBridge Sovereign RAG** retrieves `[SL-NEWS-001]` with the rising-wave classifier `[CL:5-rising-wave]` and urgent facial grammar `[intense-eyes, lean-forward]`.
 2. **🏢 Embargoed Corporate Earnings & M&A:** Click *"Embargoed Corporate Earnings & M&A"*. Verify that confidential Q3 revenue and *"zero layoffs"* stay inside your GCP project and enforce `[double-O-head-shake]` negation timing (`[SL-CORP-002]`).
