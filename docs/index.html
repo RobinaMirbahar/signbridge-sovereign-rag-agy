@@ -220,6 +220,9 @@ Interview me on authentication boundaries, cold-start mitigation, and BigQuery s
 <h2 is-upgraded>Interactive Q&amp;A &amp; Reviewing the Implementation Plan</h2>
 <p><code>/grill-me</code> launches an interactive multiple-choice architecture interview right inside your Cloud Shell terminal! For example, on Question 1 (<em>&#34;How should human users authenticate at the Public FastAPI Cloud Run Web UI perimeter, given that real pre-broadcast scripts are embargoed?&#34;</em>), you can choose <strong><code>1. (Recommended)</code></strong> or <strong><code>4. Fully open public Web UI (--allow-unauthenticated, no user login) — enforce auth strictly at the private Cloud Run and BigQuery backend boundary</code></strong> for your Codelab demo:</p>
 <p class="image-container"><img alt="Interactive /grill-me Architecture Question UI in Antigravity CLI" src="img\\23d9145669006dee.jpg"></p>
+<p>Next, <code>/grill-me</code> drills into <strong>east-west service-to-service IAM &amp; network sovereignty</strong> so pre-broadcast scripts never leak outside your Google Cloud project:</p>
+<p class="image-container"><img alt="East-West Sovereign IAM and Network Boundary Question in /grill-me" src="img\\b318b83d0e3561b6.jpg"></p>
+<p class="image-container"><img alt="Selecting Zero-Key Service Accounts, OIDC Tokens, and Private Google Access" src="img\\be83dad8996dc3d6.jpg"></p>
 <p>Answer Antigravity&#39;s clarifying questions:</p>
 <ul>
 <li><strong>Model Weights:</strong> Pre-bake <code>embeddinggemma</code> and <code>gemma4:e4b</code> inside the container build step so runtime containers need zero outbound internet downloads.</li>

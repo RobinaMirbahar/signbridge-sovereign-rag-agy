@@ -221,6 +221,12 @@ During architecture planning, Antigravity automatically invokes the **Google Clo
 
 ![Interactive /grill-me Architecture Question UI in Antigravity CLI](img/step4_grill_me_question1.jpg)
 
+Next, `/grill-me` drills into **east-west service-to-service IAM & network sovereignty** so pre-broadcast scripts never leak outside your Google Cloud project:
+
+![East-West Sovereign IAM and Network Boundary Question in /grill-me](img/step4_grill_me_question2.jpg)
+
+![Selecting Zero-Key Service Accounts, OIDC Tokens, and Private Google Access](img/step4_grill_me_sovereign_iam.jpg)
+
 Answer Antigravity's clarifying questions:
 * **Model Weights:** Pre-bake `embeddinggemma` and `gemma4:e4b` inside the container build step so runtime containers need zero outbound internet downloads.
 * **Service-to-Service Security:** Deploy `embedding_model` and `llm` with `--no-allow-unauthenticated`; only the `orchestration` UI service is publicly reachable.
