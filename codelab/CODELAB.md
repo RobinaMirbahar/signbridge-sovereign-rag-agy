@@ -206,6 +206,12 @@ Stack:
 Interview me on authentication boundaries, cold-start mitigation, and BigQuery schema choices before producing our implementation plan.
 ```
 
+![Submitting the /grill-me Architecture Prompt in Antigravity CLI](img/step4_grill_me_prompt.jpg)
+
+Antigravity (`Gemini 4 Carbon`) analyzes your Sovereign Sign-Language RAG architecture requirements and prepares an interactive design interview:
+
+![Antigravity CLI Generating the /grill-me Architecture Interview](img/step4_grill_me_generating.jpg)
+
 ### Interactive Q&A & Reviewing the Implementation Plan
 Answer Antigravity's clarifying questions:
 * **Model Weights:** Pre-bake `embeddinggemma` and `gemma4:e4b` inside the container build step so runtime containers need zero outbound internet downloads.
