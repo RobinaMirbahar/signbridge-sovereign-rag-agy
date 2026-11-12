@@ -243,6 +243,20 @@ Next, `/grill-me` highlights a subtle production detail for our **Side-by-Side C
 
 ![Confirming Unified Gemma 4 E4B and EmbeddingGemma 2 Sizing](img/step4_grill_me_gemma4_sizing_a.jpg)
 
+Finally, in **Branch 3 (BigQuery Vector Search Schema & Retrieval)**, `/grill-me` aligns on a single unified BigQuery table clustered by `(sign_language, broadcast_domain)` storing ASL & PSL glosses, phonological handshapes, and `[NMM]` Non-Manual Facial Grammar alongside `768-d` `EmbeddingGemma 2` vectors:
+
+![Branch 3 BigQuery ASL and PSL Lexicon Schema Question in /grill-me](img/step4_grill_me_branch3_bq_schema.jpg)
+
+![Asymmetric Embedding Composition and BigQuery COSINE Vector Search Indexing in /grill-me](img/step4_grill_me_branch3_vector_index.jpg)
+
+`/grill-me` wraps up the interview by confirming **single-region co-location, live NVIDIA L4 GPU quota detection with automatic CPU fallback, and initial ASL & PSL broadcast lexicon seeding**:
+
+![Single-Region Co-Location, Live L4 Quota Fallback, and ASL/PSL Seed Lexicon Question](img/step4_grill_me_colocation_seeding.jpg)
+
+Before writing your **Implementation Plan**, Antigravity automatically loads its bundled **Google Cloud CLI (`gcloud`) skills** and verifies every planned `gcloud` flag against `gcloud help` right inside Cloud Shell:
+
+![Antigravity CLI Verifying Planned gcloud Commands Against Live gcloud Help](img/step4_grill_me_gcloud_verify.jpg)
+
 Answer Antigravity's clarifying questions:
 * **Model Weights:** Pre-bake `embeddinggemma` and `gemma4:e4b` inside the container build step so runtime containers need zero outbound internet downloads.
 * **Service-to-Service Security:** Deploy `embedding_model` and `llm` with `--no-allow-unauthenticated`; only the `orchestration` UI service is publicly reachable.

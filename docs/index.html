@@ -233,6 +233,15 @@ Interview me on authentication boundaries, cold-start mitigation, and BigQuery s
 <p><strong>, ~3.5–5 GB)</strong> and <strong>EmbeddingGemma 2 (768-d)</strong> on Ollama so both GPU and CPU deployments produce identical broadcast gloss accuracy without OOM or thread contention:</p>
 <p class="image-container"><img alt="Gemma 4 E4B and EmbeddingGemma 2 Sizing Question in /grill-me" src="img\\8e7e2943a7c043f9.jpg"></p>
 <p class="image-container"><img alt="Confirming Unified Gemma 4 E4B and EmbeddingGemma 2 Sizing" src="img\\d04f41435f4baead.jpg"></p>
+<p>Finally, in <strong>Branch 3 (BigQuery Vector Search Schema &amp; Retrieval)</strong>, <code>/grill-me</code> aligns on a single unified BigQuery table clustered by <code>(sign_language, broadcast_domain)</code> storing ASL &amp; PSL glosses, phonological handshapes, and <code>[NMM]</code> Non-Manual Facial Grammar alongside <code>768-d</code> <code>EmbeddingGemma 2</code> vectors:</p>
+<p class="image-container"><img alt="Branch 3 BigQuery ASL and PSL Lexicon Schema Question in /grill-me" src="img\\80f99fa8b42d6b07.jpg"></p>
+<p class="image-container"><img alt="Asymmetric Embedding Composition and BigQuery COSINE Vector Search Indexing in /grill-me" src="img\\745da62f9e869ab6.jpg"></p>
+<p><code>/grill-me</code> wraps up the interview by confirming <strong>single-region co-location, live NVIDIA L4 GPU quota detection with automatic CPU fallback, and initial ASL &amp; PSL broadcast lexicon seeding</strong>:</p>
+<p class="image-container"><img alt="Single-Region Co-Location, Live L4 Quota Fallback, and ASL/PSL Seed Lexicon Question" src="img\\e058d349e207a4da.jpg"></p>
+<p>Before writing your <strong>Implementation Plan</strong>, Antigravity automatically loads its bundled <strong>Google Cloud CLI (</strong></p>
+<p><strong><code>gcloud</code></strong></p>
+<p><strong>) skills</strong> and verifies every planned <code>gcloud</code> flag against <code>gcloud help</code> right inside Cloud Shell:</p>
+<p class="image-container"><img alt="Antigravity CLI Verifying Planned gcloud Commands Against Live gcloud Help" src="img\\a7c3ba47741a3064.jpg"></p>
 <p>Answer Antigravity&#39;s clarifying questions:</p>
 <ul>
 <li><strong>Model Weights:</strong> Pre-bake <code>embeddinggemma</code> and <code>gemma4:e4b</code> inside the container build step so runtime containers need zero outbound internet downloads.</li>
