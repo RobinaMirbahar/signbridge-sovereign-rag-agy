@@ -223,6 +223,8 @@ Interview me on authentication boundaries, cold-start mitigation, and BigQuery s
 <p>Next, <code>/grill-me</code> drills into <strong>east-west service-to-service IAM &amp; network sovereignty</strong> so pre-broadcast scripts never leak outside your Google Cloud project:</p>
 <p class="image-container"><img alt="East-West Sovereign IAM and Network Boundary Question in /grill-me" src="img\\b318b83d0e3561b6.jpg"></p>
 <p class="image-container"><img alt="Selecting Zero-Key Service Accounts, OIDC Tokens, and Private Google Access" src="img\\be83dad8996dc3d6.jpg"></p>
+<p>In <strong>Branch 2 (Cold-Start Mitigation — Model Weight Delivery)</strong>, select the recommended strategy to bake <code>EmbeddingGemma 2</code> and <code>Gemma 4</code> weights into same-region <strong>Artifact Registry</strong> Docker layers so Cloud Run leverages <strong>native container image streaming</strong> with zero runtime IAM roles or internet egress:</p>
+<p class="image-container"><img alt="Branch 2 Cold-Start Mitigation with Artifact Registry Image Streaming in /grill-me" src="img\\a9fff59ce7aa299c.jpg"></p>
 <p>Answer Antigravity&#39;s clarifying questions:</p>
 <ul>
 <li><strong>Model Weights:</strong> Pre-bake <code>embeddinggemma</code> and <code>gemma4:e4b</code> inside the container build step so runtime containers need zero outbound internet downloads.</li>

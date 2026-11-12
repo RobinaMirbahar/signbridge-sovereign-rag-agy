@@ -227,6 +227,10 @@ Next, `/grill-me` drills into **east-west service-to-service IAM & network sover
 
 ![Selecting Zero-Key Service Accounts, OIDC Tokens, and Private Google Access](img/step4_grill_me_sovereign_iam.jpg)
 
+In **Branch 2 (Cold-Start Mitigation — Model Weight Delivery)**, select the recommended strategy to bake `EmbeddingGemma 2` and `Gemma 4` weights into same-region **Artifact Registry** Docker layers so Cloud Run leverages **native container image streaming** with zero runtime IAM roles or internet egress:
+
+![Branch 2 Cold-Start Mitigation with Artifact Registry Image Streaming in /grill-me](img/step4_grill_me_branch2_weights.jpg)
+
 Answer Antigravity's clarifying questions:
 * **Model Weights:** Pre-bake `embeddinggemma` and `gemma4:e4b` inside the container build step so runtime containers need zero outbound internet downloads.
 * **Service-to-Service Security:** Deploy `embedding_model` and `llm` with `--no-allow-unauthenticated`; only the `orchestration` UI service is publicly reachable.
