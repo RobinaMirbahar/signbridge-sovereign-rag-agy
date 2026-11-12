@@ -212,6 +212,10 @@ Antigravity (`Gemini 4 Carbon`) analyzes your Sovereign Sign-Language RAG archit
 
 ![Antigravity CLI Generating the /grill-me Architecture Interview](img/step4_grill_me_generating.jpg)
 
+During architecture planning, Antigravity automatically invokes the **Google Cloud Developer Knowledge MCP server** (`google-cloud-developer_developer-knowledge/search_documents`) to verify live Cloud Run GPU and BigQuery Vector Search documentation! Select **`2. Yes, and always allow tool ... in this conversation`** (or press **Enter** on **`1. Yes, allow tool call`**):
+
+![Allowing the Google Cloud Developer Knowledge MCP Tool in Antigravity CLI](img/step4_mcp_developer_knowledge.jpg)
+
 ### Interactive Q&A & Reviewing the Implementation Plan
 Answer Antigravity's clarifying questions:
 * **Model Weights:** Pre-bake `embeddinggemma` and `gemma4:e4b` inside the container build step so runtime containers need zero outbound internet downloads.
