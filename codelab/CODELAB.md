@@ -237,6 +237,12 @@ Next, `/grill-me` highlights a subtle production detail for our **Side-by-Side C
 
 ![Confirming Scale-to-Zero + Startup CPU Boost + OLLAMA_NUM_PARALLEL=2](img/step4_grill_me_scaling_answer.jpg)
 
+`/grill-me` then validates **model sizing across NVIDIA L4 GPU vs. the 8-vCPU / 16 GiB CPU fallback**, standardizing on **Gemma 4 E4B (`Q4_K_M`, ~3.5–5 GB)** and **EmbeddingGemma 2 (768-d)** on Ollama so both GPU and CPU deployments produce identical broadcast gloss accuracy without OOM or thread contention:
+
+![Gemma 4 E4B and EmbeddingGemma 2 Sizing Question in /grill-me](img/step4_grill_me_gemma4_sizing_q.jpg)
+
+![Confirming Unified Gemma 4 E4B and EmbeddingGemma 2 Sizing](img/step4_grill_me_gemma4_sizing_a.jpg)
+
 Answer Antigravity's clarifying questions:
 * **Model Weights:** Pre-bake `embeddinggemma` and `gemma4:e4b` inside the container build step so runtime containers need zero outbound internet downloads.
 * **Service-to-Service Security:** Deploy `embedding_model` and `llm` with `--no-allow-unauthenticated`; only the `orchestration` UI service is publicly reachable.

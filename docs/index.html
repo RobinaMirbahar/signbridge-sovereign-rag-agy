@@ -228,6 +228,11 @@ Interview me on authentication boundaries, cold-start mitigation, and BigQuery s
 <p>Next, <code>/grill-me</code> highlights a subtle production detail for our <strong>Side-by-Side Comparison UI</strong>: every broadcast query runs <strong>two parallel Gemma 4 generations</strong> (<em>Ungrounded</em> vs. <em>Grounded RAG</em>), so setting <code>OLLAMA_NUM_PARALLEL=2</code> alongside <code>min-instances=0</code> + <strong>Startup CPU Boost</strong> avoids ~$500+/mo idle GPU charges while preventing request queueing:</p>
 <p class="image-container"><img alt="Instance Scaling and Parallel Slot Tuning Question in /grill-me" src="img\\9faf7c6dd2a2fa74.jpg"></p>
 <p class="image-container"><img alt="Confirming Scale-to-Zero + Startup CPU Boost + OLLAMA_NUM_PARALLEL=2" src="img\\daed525b602231db.jpg"></p>
+<p><code>/grill-me</code> then validates <strong>model sizing across NVIDIA L4 GPU vs. the 8-vCPU / 16 GiB CPU fallback</strong>, standardizing on <strong>Gemma 4 E4B (</strong></p>
+<p><strong><code>Q4_K_M</code></strong></p>
+<p><strong>, ~3.5–5 GB)</strong> and <strong>EmbeddingGemma 2 (768-d)</strong> on Ollama so both GPU and CPU deployments produce identical broadcast gloss accuracy without OOM or thread contention:</p>
+<p class="image-container"><img alt="Gemma 4 E4B and EmbeddingGemma 2 Sizing Question in /grill-me" src="img\\8e7e2943a7c043f9.jpg"></p>
+<p class="image-container"><img alt="Confirming Unified Gemma 4 E4B and EmbeddingGemma 2 Sizing" src="img\\d04f41435f4baead.jpg"></p>
 <p>Answer Antigravity&#39;s clarifying questions:</p>
 <ul>
 <li><strong>Model Weights:</strong> Pre-bake <code>embeddinggemma</code> and <code>gemma4:e4b</code> inside the container build step so runtime containers need zero outbound internet downloads.</li>
