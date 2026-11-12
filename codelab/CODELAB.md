@@ -146,9 +146,17 @@ Antigravity CLI (`agy`) detects your Cloud Shell Linux environment (`linux_amd64
 ![Installing Antigravity CLI in Google Cloud Shell](img/step3_install_agy.jpg)
 
 ### Sign In to Antigravity CLI
-On first launch, `agy` prompts you to choose a login method (`1. Google OAuth` or `2. Use a Google Cloud project`). Select **`1. Google OAuth`** (press **Enter**) or **`2. Use a Google Cloud project`** (`cloud-champion-innovator` / your own Project ID) and follow the on-screen sign-in flow:
+On first launch, `agy` prompts you to choose a login method (`1. Google OAuth` or `2. Use a Google Cloud project`). Select **`1. Google OAuth`** (press **Enter**):
 
 ![Antigravity CLI Welcome and Login Method Screen](img/step3_agy_login.png)
+
+Click the `https://accounts.google.com/o/oauth2/...` link displayed in Cloud Shell to open Google Sign-In in a new browser tab:
+
+![Opening the Antigravity OAuth Sign-In URL from Cloud Shell](img/step3_agy_oauth_url.jpg)
+
+Copy the verification code from the **Google Antigravity** callback page, return to your **Cloud Shell** terminal, press **`Shift + Down Arrow`** to scroll to the `Paste the authorization code here:` input line at the bottom of the screen, paste the code, and press **Enter**:
+
+![Copying the Google Antigravity Verification Code](img/step3_agy_oauth_callback.png)
 
 > aside positive
 > **Tip:** Inside the `agy` terminal interface, you can type `/help` at any time to inspect built-in slash commands such as `/grill-me`, `/plan`, and `/compact`.
