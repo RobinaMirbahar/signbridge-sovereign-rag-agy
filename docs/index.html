@@ -225,6 +225,9 @@ Interview me on authentication boundaries, cold-start mitigation, and BigQuery s
 <p class="image-container"><img alt="Selecting Zero-Key Service Accounts, OIDC Tokens, and Private Google Access" src="img\\be83dad8996dc3d6.jpg"></p>
 <p>In <strong>Branch 2 (Cold-Start Mitigation — Model Weight Delivery)</strong>, select the recommended strategy to bake <code>EmbeddingGemma 2</code> and <code>Gemma 4</code> weights into same-region <strong>Artifact Registry</strong> Docker layers so Cloud Run leverages <strong>native container image streaming</strong> with zero runtime IAM roles or internet egress:</p>
 <p class="image-container"><img alt="Branch 2 Cold-Start Mitigation with Artifact Registry Image Streaming in /grill-me" src="img\\a9fff59ce7aa299c.jpg"></p>
+<p>Next, <code>/grill-me</code> highlights a subtle production detail for our <strong>Side-by-Side Comparison UI</strong>: every broadcast query runs <strong>two parallel Gemma 4 generations</strong> (<em>Ungrounded</em> vs. <em>Grounded RAG</em>), so setting <code>OLLAMA_NUM_PARALLEL=2</code> alongside <code>min-instances=0</code> + <strong>Startup CPU Boost</strong> avoids ~$500+/mo idle GPU charges while preventing request queueing:</p>
+<p class="image-container"><img alt="Instance Scaling and Parallel Slot Tuning Question in /grill-me" src="img\\9faf7c6dd2a2fa74.jpg"></p>
+<p class="image-container"><img alt="Confirming Scale-to-Zero + Startup CPU Boost + OLLAMA_NUM_PARALLEL=2" src="img\\daed525b602231db.jpg"></p>
 <p>Answer Antigravity&#39;s clarifying questions:</p>
 <ul>
 <li><strong>Model Weights:</strong> Pre-bake <code>embeddinggemma</code> and <code>gemma4:e4b</code> inside the container build step so runtime containers need zero outbound internet downloads.</li>

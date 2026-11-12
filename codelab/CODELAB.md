@@ -231,6 +231,12 @@ In **Branch 2 (Cold-Start Mitigation — Model Weight Delivery)**, select the re
 
 ![Branch 2 Cold-Start Mitigation with Artifact Registry Image Streaming in /grill-me](img/step4_grill_me_branch2_weights.jpg)
 
+Next, `/grill-me` highlights a subtle production detail for our **Side-by-Side Comparison UI**: every broadcast query runs **two parallel Gemma 4 generations** (*Ungrounded* vs. *Grounded RAG*), so setting `OLLAMA_NUM_PARALLEL=2` alongside `min-instances=0` + **Startup CPU Boost** avoids ~$500+/mo idle GPU charges while preventing request queueing:
+
+![Instance Scaling and Parallel Slot Tuning Question in /grill-me](img/step4_grill_me_scaling_question.jpg)
+
+![Confirming Scale-to-Zero + Startup CPU Boost + OLLAMA_NUM_PARALLEL=2](img/step4_grill_me_scaling_answer.jpg)
+
 Answer Antigravity's clarifying questions:
 * **Model Weights:** Pre-bake `embeddinggemma` and `gemma4:e4b` inside the container build step so runtime containers need zero outbound internet downloads.
 * **Service-to-Service Security:** Deploy `embedding_model` and `llm` with `--no-allow-unauthenticated`; only the `orchestration` UI service is publicly reachable.
