@@ -362,7 +362,11 @@ python3 vector_store/init_db.py
 ### What Happens During Deployment
 * **Cloud Build** packages each microservice and pre-pulls the open-weights `embeddinggemma` and `gemma4:e4b` weights directly into your private **Artifact Registry** image.
 * **BigQuery** creates the `signbridge_sovereign_rag.sign_lexicon_embeddings` table inside `europe-west1` and indexes all 768-dimensional vectors.
-* **Cloud Run** outputs your live `https://signbridge-rag-ui-...run.app` URL!
+* **Cloud Run** outputs your live `https://signbridge-ui-...run.app` URL!
+
+Verify all three deployed Sovereign RAG services (`signbridge-embed`, `signbridge-llm`, and `signbridge-ui`) in your project:
+
+![Verifying All Three Live SignBridge Cloud Run Services](img/step6_cloud_run_services_live.jpg)
 
 ---
 
@@ -372,7 +376,9 @@ Duration: 5
 
 ![SignBridge Verified ASL Gesture Cards](img/signbridge_real_signs_grid.jpg)
 
-Open the `SignBridge Side-by-Side Web UI Live URL` printed at the end of `./orchestration/cloud_run.sh` in your browser!
+Open the live `https://signbridge-ui-...run.app` URL in your browser to launch the **SignBridge Sovereign Sign-Language RAG** Side-by-Side dashboard! Notice the live badges confirming your **`Sovereign Boundary`** (`cloud-champion-innovator`) and automatic **`Compute: cpu-8vcpu-16gi`** fallback when regional GPU quota is `0`:
+
+![Live SignBridge Sovereign Sign-Language RAG Web UI on Google Cloud Run](img/step7_live_web_ui_dashboard.jpg)
 
 ### Test These 4 Broadcast & Corporate Scenarios
 1. **📺 Breaking News Flood Ticker:** Click *"Breaking News Flood Ticker"*. Notice how the Ungrounded LLM outputs literal word-for-word English (`FLASH FLOOD...`), whereas **SignBridge Sovereign RAG** retrieves `[SL-NEWS-001]` with the rising-wave classifier `[CL:5-rising-wave]` and urgent facial grammar `[intense-eyes, lean-forward]`.

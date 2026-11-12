@@ -329,15 +329,18 @@ python3 vector_store/init_db.py
 <ul>
 <li><strong>Cloud Build</strong> packages each microservice and pre-pulls the open-weights <code>embeddinggemma</code> and <code>gemma4:e4b</code> weights directly into your private <strong>Artifact Registry</strong> image.</li>
 <li><strong>BigQuery</strong> creates the <code>signbridge_sovereign_rag.sign_lexicon_embeddings</code> table inside <code>europe-west1</code> and indexes all 768-dimensional vectors.</li>
-<li><strong>Cloud Run</strong> outputs your live <code>https://signbridge-rag-ui-...run.app</code> URL!</li>
+<li><strong>Cloud Run</strong> outputs your live <code>https://signbridge-ui-...run.app</code> URL!</li>
 </ul>
+<p>Verify all three deployed Sovereign RAG services (<code>signbridge-embed</code>, <code>signbridge-llm</code>, and <code>signbridge-ui</code>) in your project:</p>
+<p class="image-container"><img alt="Verifying All Three Live SignBridge Cloud Run Services" src="img\\412de20acaca26e4.jpg"></p>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Test the Side-by-Side Web UI and Explore Extensions" duration="5">
         <p class="image-container"><img alt="SignBridge Verified ASL Gesture Cards" src="img\\74f91bd7fcafefb5.jpg"></p>
-<p>Open the <code>SignBridge Side-by-Side Web UI Live URL</code> printed at the end of <code>./orchestration/cloud_run.sh</code> in your browser!</p>
+<p>Open the live <code>https://signbridge-ui-...run.app</code> URL in your browser to launch the <strong>SignBridge Sovereign Sign-Language RAG</strong> Side-by-Side dashboard! Notice the live badges confirming your <strong><code>Sovereign Boundary</code></strong> (<code>cloud-champion-innovator</code>) and automatic <strong><code>Compute: cpu-8vcpu-16gi</code></strong> fallback when regional GPU quota is <code>0</code>:</p>
+<p class="image-container"><img alt="Live SignBridge Sovereign Sign-Language RAG Web UI on Google Cloud Run" src="img\\a55c5c18d0b8f9aa.jpg"></p>
 <h2 is-upgraded>Test These 4 Broadcast &amp; Corporate Scenarios</h2>
 <ol type="1">
 <li><strong>📺 Breaking News Flood Ticker:</strong> Click <em>&#34;Breaking News Flood Ticker&#34;</em>. Notice how the Ungrounded LLM outputs literal word-for-word English (<code>FLASH FLOOD...</code>), whereas <strong>SignBridge Sovereign RAG</strong> retrieves <code>[SL-NEWS-001]</code> with the rising-wave classifier <code>[CL:5-rising-wave]</code> and urgent facial grammar <code>[intense-eyes, lean-forward]</code>.</li>
