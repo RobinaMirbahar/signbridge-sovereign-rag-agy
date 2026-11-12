@@ -1,0 +1,98 @@
+[
+  {
+    "doc_id": "SL-NEWS-001",
+    "category": "Breaking Newsroom & Emergency Broadcast",
+    "sign_system": "ASL / PSL Broadcast Standard",
+    "phrase": "BREAKING NEWS: Flash flood evacuation ordered for riverfront districts—move to high ground immediately!",
+    "verified_gloss": "NEWS BREAK-URGENT [intense-eyes, lean-forward]! WATER-RISE FLOOD FAST [CL:5-rising-wave] RIVER AREA — PEOPLE ALL LEAVE EVACUATE HIGH-LAND GO-NOW [firm-brow-furrow, sharp-nod]!",
+    "handshape": "FLOOD: Double 5-handshapes palms down rising sharply with undulating fingers; EVACUATE: F-hand/5-hand pulling out of enclosed non-dominant space rapidly.",
+    "location_movement": "Establish RIVER AREA low in center space -> rising wave classifier -> directional sweep upward to HIGH-LAND on upper right.",
+    "non_manual_markers": "Urgent widened eyes on NEWS BREAK + puffed cheeks on WATER-RISE + imperative furrowed brow on GO-NOW.",
+    "clinical_safety_note": "BROADCAST SAFETY: Ungrounded LLMs sign literal English 'FLASH' (camera flash / blinking light) + 'GROUND' (dirt/floor), confusing Deaf viewers during a life-or-death live TV ticker alert!",
+    "privacy_tier": "Embargoed-Broadcast-Newsroom"
+  },
+  {
+    "doc_id": "SL-CORP-002",
+    "category": "Corporate Town Hall & Pre-Earnings Embargo",
+    "sign_system": "ASL (Corporate & Investor Comms)",
+    "phrase": "Confidential All-Hands: Q3 cloud revenue grew 28% year-over-year, and there will be zero layoffs during the merger.",
+    "verified_gloss": "SECRET INTERNAL MEETING [lips-sealed-lock]: [fs-Q-3] CLOUD MONEY-EARN GROW-UP 28-PERCENT COMPARE LAST-YEAR [body-shift]. COMPANY MERGE-JOIN [CL:5-interlock] — FIRE-LAYOFF ZERO-NONE [double-O-head-shake, reassuring-nod]!",
+    "handshape": "MERGE: Both 5-handshapes approaching from opposite sides and interlocking fingers smoothly; LAYOFF: Non-dominant flat B-palm sliced across by dominant index/B-hand followed by emphatic ZERO.",
+    "location_movement": "Temporal comparison: LAST-YEAR anchored at right shoulder -> Q3 NOW forward -> upward chart trajectory for 28-PERCENT.",
+    "non_manual_markers": "Strict confidentiality mouth-seal on SECRET; relieved/reassuring expression + clear negative head-shake on LAYOFF ZERO-NONE.",
+    "clinical_safety_note": "SEC / INSIDER TRADING SOVEREIGNTY: Pre-announcement earnings & M&A town hall scripts CANNOT be sent to external third-party AI APIs. Furthermore, ungrounded LLMs often drop negation timing, making 'LAYOFF' appear affirmative before Deaf employees see 'NONE'!",
+    "privacy_tier": "SEC-Material-NonPublic-Corporate"
+  },
+  {
+    "doc_id": "SL-MEDIA-003",
+    "category": "Live TV Financial & Economic Desk (PSL / Regional Broadcast)",
+    "sign_system": "PSL (Pakistan Sign Language — News Anchor Desk)",
+    "phrase": "The Central Bank cut interest rates by 150 basis points today to ease inflation for small businesses.",
+    "verified_gloss": "TODAY STATE-BANK [fs-S-B-P] INTEREST-RATE CUT-DOWN 1.5-PERCENT [150-BPS]. GOAL [brow-raise]: PRICE-INFLATION HIGH PUSH-DOWN, SMALL SHOP-BUSINESS HELP-LIFT.",
+    "handshape": "PSL INFLATION/EXPENSIVE: Money handshape rising steeply above head, then dominant palm pushes downward for EASE/REDUCE; HELP-LIFT: Supporting flat palm lifting thumbs-up fist.",
+    "location_movement": "Anchor establishes STATE-BANK authority locus high-center, then contrasts high inflation (upper space) pushed down to manageable level.",
+    "non_manual_markers": "Rhetorical topic brow-raise on GOAL ('WHY?'); encouraging nod on SMALL BUSINESS HELP-LIFT.",
+    "clinical_safety_note": "MEDIA CLARITY TRAP: Literal word-for-word translation of '150 basis points' as '150 BASE DOTS' is unintelligible on live television; broadcast sign style guides convert 150 bps into clear visual percentage + rate-cut directional motion.",
+    "privacy_tier": "Sovereign-Media-Newsroom"
+  },
+  {
+    "doc_id": "SL-MEDIA-004",
+    "category": "Studio Production & Live Press Briefing",
+    "sign_system": "ASL / International Broadcast",
+    "phrase": "This statement is off the record and under strict embargo until 9:00 AM tomorrow.",
+    "verified_gloss": "STATEMENT THIS [topic-raise] — PUBLIC ANNOUNCE FORBID! LOCK-HOLD SECRET UNTIL TOMORROW MORNING 9-HOUR-O'CLOCK OPEN-RELEASE [sharp-palm-open].",
+    "handshape": "LOCK-HOLD: S-fist twisting shut over non-dominant wrist; OPEN-RELEASE: Crossed wrists opening outward at exact 9 AM temporal marker.",
+    "location_movement": "Contrastive timeline: NOW->TOMORROW 9 AM held closed in center space, then released forward.",
+    "non_manual_markers": "Firm head-shake + pressed lips during LOCK-HOLD; raised brows marking exact release condition.",
+    "clinical_safety_note": "JOURNALISTIC IDIOM TRAP: Ungrounded models translate English idiom 'off the record' literally as 'MUSIC VINYL RECORD OFF-TABLE', causing catastrophic broadcast embarrassment!",
+    "privacy_tier": "Embargoed-Press-Room"
+  },
+  {
+    "doc_id": "SL-CLIN-001",
+    "category": "Clinical Emergency & Triage",
+    "sign_system": "ASL (Hospital Standardized)",
+    "phrase": "Are you allergic to penicillin or any pain medication?",
+    "verified_gloss": "MEDICINE PAIN [brow-raise] PENICILLIN [fs-P-E-N-I-C-I-L-L-I-N] IX-2 ALLERGIC YOU [brow-raise, head-forward]?",
+    "handshape": "ALLERGIC: Index finger touches nose tip, then snaps open into 5-handshape moving away (OPPOSITE/REACTION variant).",
+    "location_movement": "Neutral signing space -> Nose tip -> Dominant hand opens sharply away from body.",
+    "non_manual_markers": "Raised eyebrows (polar yes/no question) + slight forward head tilt + held eye contact on final sign YOU.",
+    "clinical_safety_note": "CRITICAL: Ungrounded LLMs frequently omit fingerspelling [fs-PENICILLIN] and omit polar brow-raise, turning a life-critical allergy question into a declarative statement.",
+    "privacy_tier": "HIPAA-Sovereign-Internal"
+  },
+  {
+    "doc_id": "SL-PSL-003",
+    "category": "Regional Healthcare — Pakistan Sign Language (PSL)",
+    "sign_system": "PSL (Pakistan Sign Language — Clinical)",
+    "phrase": "Please fast for 8 hours before your blood sugar test tomorrow morning.",
+    "verified_gloss": "TOMORROW MORNING BLOOD SUGAR TEST BEFORE — 8 HOUR EAT-NOT [mouth-closed-seal, head-shake] MUST.",
+    "handshape": "PSL BLOOD: Red lip touch + downward trickle fingers; PSL SUGAR: Fingertips brush chin/cheek; EAT-NOT: Flat O-hand to mouth followed by palm-out negative sweep.",
+    "location_movement": "Temporal-first Topic-Comment order: TOMORROW MORNING -> TEST -> 8 HOUR FASTING.",
+    "non_manual_markers": "Firm head nod on MUST; negative head-shake synchronized with EAT-NOT.",
+    "clinical_safety_note": "HOMONYM TRAP: Standard models confuse English 'FAST' (speed/quick) with medical 'FASTING' (EAT-NOT), dangerously instructing patients to 'eat quickly'!",
+    "privacy_tier": "Sovereign-Hospital-PK"
+  },
+  {
+    "doc_id": "SL-EDU-004",
+    "category": "Deaf Education & Corporate L&D Training",
+    "sign_system": "ASL (Enterprise & STEM Training)",
+    "phrase": "You get 50% extra time on the certification exam and a certified Deaf interpreter.",
+    "verified_gloss": "CERTIFICATION TEST [topic-brow-raise] — TIME ADD HALF-50-PERCENT IX-2 GET, PLUS CERTIFIED DEAF INTERPRETER [CDI] SUPPORT IX-2.",
+    "handshape": "CERTIFICATION: C-hand stamps non-dominant palm; INTERPRETER: F-handshapes alternating wrist rotation.",
+    "location_movement": "Topic established in left signing space, accommodations listed sequentially on non-dominant buoy fingers.",
+    "non_manual_markers": "Topic brow-raise on CERTIFICATION TEST + micro-pause; reassuring nod on SUPPORT IX-2.",
+    "clinical_safety_note": "HR / ADA / FERPA Protected: Certified Deaf Interpreter (CDI) is distinct from a hearing interpreter; never collapse CDI into generic 'translator'.",
+    "privacy_tier": "HR-ADA-Sovereign"
+  },
+  {
+    "doc_id": "SL-LEGAL-006",
+    "category": "Corporate Legal & Compliance",
+    "sign_system": "ASL (Legal & HR Contracts)",
+    "phrase": "Do not sign any NDA or police statement until corporate counsel and a qualified sign interpreter arrive.",
+    "verified_gloss": "COMPANY LAWYER, QUALIFIED SIGN INTERPRETER TWO-OF-THEM ARRIVE NOT-YET [tongue-th, head-shake] — [fs-N-D-A] PAPER SIGN-NAME FORBID/DON'T [firm-brow-furrow]!",
+    "handshape": "SIGN-NAME: H-handshape pressing onto non-dominant flat B-palm (contract signature, NOT 'SIGN-LANGUAGE' rotating index fingers!).",
+    "location_movement": "Non-dominant flat palm acts as contract document; dominant H-hand stamps signature.",
+    "non_manual_markers": "Essential ASL mouth morpheme [TH] + head-shake on NOT-YET; intense furrowed brow + sharp head-shake on FORBID.",
+    "clinical_safety_note": "HOMONYM TRAP: English 'sign a contract' (SIGN-NAME, H-hand on palm) vs. 'sign language' (SIGN, rotating 1-hands).",
+    "privacy_tier": "Legal-Privilege-Sovereign"
+  }
+]

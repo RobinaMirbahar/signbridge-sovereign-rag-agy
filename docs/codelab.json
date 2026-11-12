@@ -1,0 +1,34 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2026-11-12T21:58:48+05:00",
+  "id": "signbridge-rag-agy",
+  "duration": 43,
+  "title": "Build and Deploy a Sovereign Sign-Language RAG System with Gemma 4 and Antigravity",
+  "authors": "Robina Mirbahar (Google Developer Expert — AI \u0026 Cloud)",
+  "summary": "Build and Deploy a Sovereign Sign-Language RAG System for Broadcast Media, Newsrooms \u0026 Enterprises with Gemma 4, EmbeddingGemma 2, BigQuery Vector Search, and Antigravity",
+  "source": "CODELAB.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "ai",
+    "cloud-run",
+    "bigquery",
+    "accessibility",
+    "rag"
+  ],
+  "tags": [
+    "antigravity",
+    "bigquery-vector-search",
+    "cloud-run",
+    "gcp",
+    "gemma",
+    "media",
+    "sign-language"
+  ],
+  "url": "signbridge-rag-agy"
+}

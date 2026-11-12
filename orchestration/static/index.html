@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SignBridge Sovereign RAG — Broadcast Media, Corporate &amp; Clinical Sign-Language Copilot</title>
+  <style>
+    :root {
+      --bg: #fffbf5;
+      --card: #ffffff;
+      --ink: #1e293b;
+      --muted: #475569;
+      --coral-soft: #fff0ed;
+      --mint-soft: #ecfdf5;
+      --lavender: #ede9fe;
+      --purple: #5b21b6;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+      background: radial-gradient(circle at top right, #eef2ff 0%, #fffbf5 48%, #ecfdf5 100%);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 28px 20px 68px; }
+    .hero {
+      display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 24px; align-items: center;
+      background: var(--card); border: 2px solid #dbeafe; border-radius: 24px; padding: 28px;
+      box-shadow: 0 12px 32px rgba(30, 41, 59, 0.06); margin-bottom: 24px;
+    }
+    @media (max-width: 880px) { .hero, .split, .audience-grid { grid-template-columns: 1fr !important; } }
+    .pill-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .pill { font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 999px; background: var(--lavender); color: var(--purple); }
+    .pill.mint { background: var(--mint-soft); color: #047857; }
+    .pill.amber { background: #fef3c7; color: #b45309; }
+    h1 { margin: 0 0 10px; font-size: 29px; line-height: 1.2; }
+    .hero p { margin: 0; color: var(--muted); font-size: 15px; }
+    .hero img { width: 100%; border-radius: 18px; border: 2px solid #f1f5f9; }
+    .audience-section {
+      background: var(--card); border: 2px solid #e0e7ff; border-radius: 22px; padding: 24px; margin-bottom: 24px;
+    }
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 14px;
+    }
+    .aud-card {
+      border-radius: 16px; padding: 16px; border: 1.5px solid #e2e8f0; background: #f8fafc;
+    }
+    .aud-card h4 { margin: 0 0 6px; font-size: 15px; }
+    .aud-card p { margin: 0; font-size: 13px; color: var(--muted); }
+    .query-panel {
+      background: var(--card); border-radius: 20px; padding: 22px; border: 2px solid var(--border);
+      margin-bottom: 24px; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+    }
+    .preset-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .preset-btn {
+      border: 1.5px solid #cbd5e1; background: #f8fafc; color: var(--ink);
+      border-radius: 999px; padding: 7px 13px; font-size: 12.5px; cursor: pointer; font-weight: 600;
+    }
+    .preset-btn:hover { border-color: var(--purple); background: var(--lavender); color: var(--purple); }
+    .input-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .input-row input {
+      flex: 1; min-width: 260px; padding: 13px 16px; font-size: 15px;
+      border: 2px solid #cbd5e1; border-radius: 14px; outline: none;
+    }
+    .input-row select { padding: 12px 14px; border-radius: 14px; border: 2px solid #cbd5e1; font-weight: 600; background: #fff; }
+    .run-btn {
+      background: linear-gradient(135deg, #6366f1, #10b981); color: #fff; border: none;
+      border-radius: 14px; padding: 13px 24px; font-weight: 700; font-size: 15px; cursor: pointer;
+    }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+    .card { border-radius: 22px; padding: 22px; border: 2px solid; background: var(--card); }
+    .card.ungrounded { border-color: #fecaca; background: linear-gradient(180deg, var(--coral-soft) 0%, #fff 38%); }
+    .card.grounded { border-color: #a7f3d0; background: linear-gradient(180deg, var(--mint-soft) 0%, #fff 38%); }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .badge-bad { background: #fee2e2; color: #b91c1c; padding: 4px 11px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .badge-good { background: #d1fae5; color: #065f46; padding: 4px 11px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .gloss-box {
+      font-family: "JetBrains Mono", Consolas, monospace; background: #0f172a; color: #f8fafc;
+      padding: 14px; border-radius: 14px; font-size: 13.5px; margin-bottom: 14px; word-break: break-word;
+    }
+    .meta-item { margin-bottom: 10px; font-size: 14px; }
+    .sources { background: var(--card); border-radius: 20px; padding: 22px; border: 2px solid #e0e7ff; }
+    .source-card { border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 14px; margin-top: 12px; background: #f8fafc; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div>
+        <div class="pill-bar">
+          <span class="pill">📺 Newsrooms · Corporate · Media</span>
+          <span class="pill mint">🔒 Zero-Egress Sovereign Cloud</span>
+          <span class="pill amber">⚡ Gemma 4 + EmbeddingGemma 2 + BigQuery</span>
+        </div>
+        <h1>SignBridge Sovereign Sign-Language RAG</h1>
+        <p>
+          Empowering <strong>Broadcast News Channels, Corporate Town Halls, Digital Media Studios, and Hospitals</strong>
+          to convert embargoed teleprompter scripts, earnings briefings, and emergency tickers into <strong>verified ASL &amp; PSL Sign Gloss Packets</strong>—100% inside your private Google Cloud boundary.
+        </p>
+      </div>
+      <div>
+        <img src="/assets/hero_signbridge_sovereign_rag.jpg" alt="Robina Mirbahar — SignBridge Sovereign RAG Illustration" />
+      </div>
+    </section>
+
+    <section class="audience-section">
+      <h3 style="margin:0;">🌍 How SignBridge Is Useful &amp; Who Can Use It</h3>
+      <div class="audience-grid">
+        <div class="aud-card" style="background:#fff7ed; border-color:#fed7aa;">
+          <h4>📺 TV News Channels &amp; Live Broadcast</h4>
+          <p>Instant teleprompter-to-Sign-Gloss prep for picture-in-picture Deaf interpreters during breaking news, elections, financial tickers, and flash-flood alerts—keeping embargoed scripts inside the newsroom VPC.</p>
+        </div>
+        <div class="aud-card" style="background:#eef2ff; border-color:#c7d2fe;">
+          <h4>🏢 Corporate Town Halls &amp; Investor Relations</h4>
+          <p>Translate pre-announcement quarterly earnings, M&amp;A all-hands, and HR/NDA briefings into verified ASL/PSL interpreter packets with zero SEC material non-public data leakage.</p>
+        </div>
+        <div class="aud-card" style="background:#ecfdf5; border-color:#a7f3d0;">
+          <h4>🎬 Digital Media, OTT &amp; Studio Production</h4>
+          <p>Standardize regional sign-language style guides (ASL, PSL, BSL), preserve non-manual facial grammar, and eliminate embarrassing literal-English idiom mistranslations ("off the record", "150 bps").</p>
+        </div>
+        <div class="aud-card" style="background:#fdf4ff; border-color:#f5d0fe;">
+          <h4>🏥 Public Sector, Healthcare &amp; Deaf Education</h4>
+          <p>HIPAA/FERPA-compliant clinical triage and STEM classroom exam accommodations where patient and student records never leave sovereign infrastructure.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="query-panel">
+      <div style="font-weight:700; margin-bottom:8px;">Try a Live Broadcast Media, Corporate, or Clinical Prompt:</div>
+      <div class="preset-row">
+        <button class="preset-btn" onclick="setPrompt('BREAKING NEWS: Flash flood evacuation ordered for riverfront districts—move to high ground immediately!', 'ALL')">📺 Breaking News Flood Ticker</button>
+        <button class="preset-btn" onclick="setPrompt('Confidential All-Hands: Q3 cloud revenue grew 28% year-over-year, and there will be zero layoffs during the merger.', 'ASL')">🏢 Embargoed Corporate Earnings &amp; M&amp;A</button>
+        <button class="preset-btn" onclick="setPrompt('The Central Bank cut interest rates by 150 basis points today to ease inflation for small businesses.', 'PSL')">📈 Financial TV Desk (PSL 150 bps)</button>
+        <button class="preset-btn" onclick="setPrompt('This statement is off the record and under strict embargo until 9:00 AM tomorrow.', 'ASL')">🎙️ Press Briefing Idiom Trap</button>
+        <button class="preset-btn" onclick="setPrompt('Please fast for 8 hours before your blood sugar test tomorrow morning.', 'PSL')">🏥 Clinical Fasting Trap (PSL)</button>
+      </div>
+      <div class="input-row">
+        <input id="queryInput" type="text" value="Confidential All-Hands: Q3 cloud revenue grew 28% year-over-year, and there will be zero layoffs during the merger." />
+        <select id="systemSelect">
+          <option value="ALL">All Sign Systems (ASL + PSL Broadcast)</option>
+          <option value="ASL">ASL (Corporate / Broadcast)</option>
+          <option value="PSL">PSL (Pakistan Sign Language)</option>
+        </select>
+        <button class="run-btn" onclick="runComparison()">Compare Side-by-Side ✨</button>
+      </div>
+    </section>
+
+    <section class="split">
+      <div class="card ungrounded">
+        <div class="card-header">
+          <h3 style="margin:0;">❌ Baseline Ungrounded LLM</h3>
+          <span class="badge-bad">Broadcast / Idiom Failure</span>
+        </div>
+        <div class="gloss-box" id="ungroundedGloss">Loading...</div>
+        <div class="meta-item"><strong>Handshape &amp; Space:</strong> <span id="ungroundedHand">—</span></div>
+        <div class="meta-item"><strong>Facial Grammar (NMM):</strong> <span id="ungroundedNmm">—</span></div>
+        <div class="meta-item" style="background:#fff1f2; padding:10px 12px; border-radius:10px; border:1px solid #fecdd3;">
+          <strong>⚠️ Why Ungrounded Fails on Live Air / Town Halls:</strong> <span id="ungroundedRisk">—</span>
+        </div>
+      </div>
+
+      <div class="card grounded">
+        <div class="card-header">
+          <h3 style="margin:0;">✅ SignBridge Sovereign RAG</h3>
+          <span class="badge-good">BigQuery Broadcast-Verified</span>
+        </div>
+        <div class="gloss-box" id="groundedGloss">Loading...</div>
+        <div class="meta-item"><strong>Handshape &amp; Spatial Movement:</strong> <span id="groundedHand">—</span></div>
+        <div class="meta-item"><strong>Non-Manual Facial Grammar [NMM]:</strong> <span id="groundedNmm">—</span></div>
+        <div class="meta-item"><strong>Grounding Rationale:</strong> <span id="groundedExplain">—</span></div>
+        <div class="meta-item" style="background:#ecfdf5; padding:10px 12px; border-radius:10px; border:1px solid #a7f3d0;">
+          <strong>📚 Sovereign Lexicon Citation:</strong> <span id="groundedCitation">—</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sources">
+      <h3 style="margin:0;">🔍 Top Retrieved BigQuery Vector Search Chunks (EmbeddingGemma 2 · 768-d Cosine)</h3>
+      <div id="sourcesList"></div>
+    </section>
+  </div>
+
+  <script>
+    function setPrompt(text, sys) {
+      document.getElementById('queryInput').value = text;
+      document.getElementById('systemSelect').value = sys;
+      runComparison();
+    }
+
+    async function runComparison() {
+      const query = document.getElementById('queryInput').value.trim();
+      const sign_system_filter = document.getElementById('systemSelect').value;
+      if (!query) return;
+
+      const res = await fetch('/api/compare', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query, sign_system_filter, top_k: 2 })
+      });
+      const data = await res.json();
+
+      document.getElementById('ungroundedGloss').textContent = data.ungrounded_output.gloss;
+      document.getElementById('ungroundedHand').textContent = data.ungrounded_output.handshape_guidance;
+      document.getElementById('ungroundedNmm').textContent = data.ungrounded_output.non_manual_markers;
+      document.getElementById('ungroundedRisk').textContent = data.ungrounded_output.risk_warning;
+
+      document.getElementById('groundedGloss').textContent = data.sovereign_rag_output.gloss;
+      document.getElementById('groundedHand').textContent = data.sovereign_rag_output.handshape_guidance;
+      document.getElementById('groundedNmm').textContent = data.sovereign_rag_output.non_manual_markers;
+      document.getElementById('groundedExplain').textContent = data.sovereign_rag_output.llm_explanation;
+      document.getElementById('groundedCitation').textContent = data.sovereign_rag_output.citation;
+
+      const container = document.getElementById('sourcesList');
+      container.innerHTML = data.retrieved_sources.map(s => `
+        <div class="source-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700;">
+            <span>[${s.doc_id}] ${s.category} — ${s.sign_system}</span>
+            <span style="color:#047857;">Cosine Sim: ${s.cosine_similarity} · ${s.privacy_tier}</span>
+          </div>
+          <div style="font-size:13.5px; color:#334155; margin-top:6px;"><strong>Verified Gloss:</strong> <code>${s.verified_gloss}</code></div>
+        </div>
+      `).join('');
+    }
+
+    window.addEventListener('DOMContentLoaded', runComparison);
+  </script>
+</body>
+</html>

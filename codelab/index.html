@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build and Deploy a Sovereign Sign-Language RAG System with Gemma 4 and Antigravity</title>
+  <style>
+    :root {
+      --gblue: #1a73e8;
+      --gblue-soft: #e8f0fe;
+      --gtext: #202124;
+      --gmuted: #5f6368;
+      --gbg: #f8f9fa;
+      --gcard: #ffffff;
+      --gborder: #dadce0;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Google Sans", "Roboto", "Segoe UI", sans-serif; background: var(--gbg); color: var(--gtext); display: flex; flex-direction: column; min-height: 100vh; }
+    header {
+      height: 64px; background: #fff; border-bottom: 1px solid var(--gborder);
+      display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+      position: sticky; top: 0; z-index: 20;
+    }
+    .header-title { font-weight: 600; font-size: 17px; display: flex; align-items: center; gap: 10px; }
+    .time-pill { background: var(--gblue-soft); color: var(--gblue); font-weight: 600; font-size: 13px; padding: 6px 14px; border-radius: 999px; }
+    .layout { display: grid; grid-template-columns: 290px 1fr; flex: 1; }
+    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } aside { display: none; } }
+    aside { background: #fff; border-right: 1px solid var(--gborder); padding: 18px 12px; }
+    .step-nav {
+      display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 8px;
+      cursor: pointer; color: var(--gmuted); font-size: 14px; margin-bottom: 4px; font-weight: 500;
+    }
+    .step-nav:hover { background: #f1f3f4; }
+    .step-nav.active { background: var(--gblue-soft); color: var(--gblue); font-weight: 600; }
+    .step-num {
+      width: 26px; height: 26px; border-radius: 50%; background: #e8eaed; color: #3c4043;
+      display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0;
+    }
+    .step-nav.active .step-num { background: var(--gblue); color: #fff; }
+    main { padding: 32px 24px 80px; display: flex; justify-content: center; }
+    .step-card {
+      display: none; width: 100%; max-width: 860px; background: var(--gcard);
+      border: 1px solid var(--gborder); border-radius: 12px; padding: 36px 42px;
+      box-shadow: 0 2px 8px rgba(60, 64, 67, 0.08); line-height: 1.65;
+    }
+    .step-card.active { display: block; }
+    .step-card h2 { margin-top: 0; font-size: 26px; color: #174ea6; border-bottom: 1px solid #f1f3f4; padding-bottom: 12px; }
+    .step-card h3 { margin-top: 26px; font-size: 18px; color: #202124; }
+    .step-card img { width: 100%; border-radius: 12px; border: 1px solid #e8eaed; margin: 16px 0; }
+    pre {
+      background: #1e293b; color: #f8fafc; padding: 16px 18px; border-radius: 10px;
+      overflow-x: auto; font-size: 13.5px; line-height: 1.5; position: relative;
+    }
+    .callout {
+      padding: 14px 18px; border-radius: 10px; margin: 18px 0; font-size: 14.5px;
+    }
+    .callout.info { background: #e8f0fe; border-left: 4px solid #1a73e8; }
+    .callout.tip { background: #e6f4ea; border-left: 4px solid #137333; }
+    .callout.warn { background: #fef7e0; border-left: 4px solid #ea8600; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    th, td { border: 1px solid var(--gborder); padding: 10px 12px; text-align: left; }
+    th { background: #f1f3f4; }
+    .audience-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+    @media (max-width: 700px) { .audience-boxes { grid-template-columns: 1fr; } }
+    .aud-box { border: 1px solid #dadce0; border-radius: 10px; padding: 14px 16px; background: #fbfdff; }
+    .nav-footer {
+      display: flex; justify-content: space-between; margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--gborder);
+    }
+    .btn {
+      padding: 10px 22px; border-radius: 6px; font-weight: 600; cursor: pointer; border: 1px solid var(--gborder);
+      background: #fff; color: var(--gblue); font-size: 14px;
+    }
+    .btn.primary { background: var(--gblue); color: #fff; border-color: var(--gblue); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-title">
+      <span>🤟</span>
+      <span>Build and Deploy a Sovereign Sign-Language RAG System with Gemma 4 and Antigravity</span>
+    </div>
+    <div class="time-pill" id="timeRemaining">⏱️ 42 mins remaining</div>
+  </header>
+
+  <div class="layout">
+    <aside id="sidebar"></aside>
+    <main>
+      <!-- STEP 0 -->
+      <section class="step-card active" data-title="Introduction" data-mins="42">
+        <h2>1. Introduction</h2>
+        <img src="../assets/signbridge_sequence_hero.jpg" alt="SignBridge Sequential Sign-Language Banner" />
+        <p><strong>Author:</strong> Robina Mirbahar (Google Developer Expert — AI &amp; Cloud · Women Techmakers Ambassador)</p>
+
+        <h3>Why SignBridge Was Built (The Problem We Are Solving)</h3>
+        <p>
+          SignBridge was built to close three critical gaps preventing <strong>TV news channels, digital media studios, and global corporations</strong> from delivering accurate, privacy-safe Sign Language accessibility to 70M+ Deaf viewers and employees:
+        </p>
+        <ul>
+          <li><strong>1. The Live-Broadcast Speed Gap:</strong> Breaking news teleprompters and live town hall Q&amp;As change seconds before going on air—leaving studio Deaf interpreters zero time to look up specialized financial (<code>150 bps</code>), emergency (<code>flash flood</code>), or legal signs.</li>
+          <li><strong>2. The Generic AI Hallucination Gap:</strong> Sign languages (<strong>ASL, PSL, BSL</strong>) use 3D spatial Topic-Comment grammar and mandatory <strong>Non-Manual Facial Grammar (<code>[brow-raise]</code>, <code>[head-shake]</code>)</strong>—not word-for-word English! Ungrounded LLMs translate English idioms literally (e.g., turning <em>"off the record"</em> into <em>"vinyl music record off table"</em> on live TV).</li>
+          <li><strong>3. The Sovereign Embargo &amp; Compliance Gap:</strong> Pre-announcement corporate earnings, M&amp;A town halls, and embargoed press briefings contain confidential MNPI that <strong>cannot legally be sent</strong> to public third-party AI APIs. SignBridge runs <strong>100% inside your private Google Cloud boundary</strong>.</li>
+        </ul>
+
+        <img src="../assets/side_by_side_rag_vs_ungrounded.jpg" alt="Ungrounded vs Grounded Sign-Language RAG" />
+
+        <h3>RAG vs. Non-RAG Systems on Live Television &amp; Town Halls</h3>
+        <table>
+          <thead>
+            <tr><th>Live Scenario</th><th>❌ Non-RAG (Ungrounded LLM)</th><th>✅ SignBridge Sovereign RAG</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Breaking News Flood Ticker</strong></td>
+              <td>Signs literal English <code>CAMERA-FLASH</code> + <code>DIRT-FLOOR</code> during emergency</td>
+              <td>Retrieves broadcast standard <code>WATER-RISE [CL:5-wave] EVACUATE HIGH-LAND GO-NOW</code></td>
+            </tr>
+            <tr>
+              <td><strong>Press Room Embargo</strong> (<em>"Off the record"</em>)</td>
+              <td>Hallucinates <code>VINYL MUSIC RECORD OFF-TABLE</code> on live air</td>
+              <td>Retrieves journalistic lexicon <code>PUBLIC ANNOUNCE FORBID — LOCK-HOLD SECRET</code></td>
+            </tr>
+            <tr>
+              <td><strong>Financial TV Desk (PSL)</strong> (<em>"150 basis points"</em>)</td>
+              <td>Outputs unintelligible literal <code>150 BASE DOTS</code></td>
+              <td>Converts to broadcast PSL <code>1.5-PERCENT CUT-DOWN</code> + spatial inflation contrast</td>
+            </tr>
+            <tr>
+              <td><strong>Corporate Earnings &amp; M&amp;A</strong></td>
+              <td>Exposes confidential MNPI externally &amp; drops negation timing</td>
+              <td>Zero external egress; enforces <code>[double-O-head-shake]</code> on <code>LAYOFF ZERO-NONE</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Who Can Use SignBridge &amp; How They Use It Step-by-Step</h3>
+        <div class="audience-boxes">
+          <div class="aud-box">
+            <strong>📺 TV News Channels &amp; Live Broadcast</strong>
+            <p style="margin:6px 0 0; font-size:13.5px;"><strong>How they use it:</strong> Connect newsroom teleprompters (ENPS/iNEWS) to <code>/api/compare</code> so verified ASL/PSL Gloss Cards + Facial Grammar cues pop up on the studio interpreter's confidence monitor in real time.</p>
+          </div>
+          <div class="aud-box">
+            <strong>🏢 Corporate Town Halls &amp; Investor Comms</strong>
+            <p style="margin:6px 0 0; font-size:13.5px;"><strong>How they use it:</strong> Paste embargoed CEO earnings scripts &amp; M&amp;A FAQs into the private GCP Web UI before global livestreams to generate audited Interpreter Prep Packets with zero SEC data leakage.</p>
+          </div>
+          <div class="aud-box">
+            <strong>🎬 Digital Media, OTT &amp; Podcast Studios</strong>
+            <p style="margin:6px 0 0; font-size:13.5px;"><strong>How they use it:</strong> Load house ASL/PSL/BSL style guides into BigQuery Vector Search (<code>init_db.py</code>) to standardize regional signs and classifier usage across every show and presenter.</p>
+          </div>
+          <div class="aud-box">
+            <strong>🎓 Interpreter QA &amp; Public Emergency Desks</strong>
+            <p style="margin:6px 0 0; font-size:13.5px;"><strong>How they use it:</strong> Train interpreters with the Side-by-Side Comparator to catch English idiom traps and verify HIPAA/ADA safety before going on camera.</p>
+          </div>
+        </div>
+
+        <div class="callout info">
+          <strong>What you'll build:</strong> A self-contained serverless RAG stack using <strong>Open-Weights Gemma 4</strong>, <strong>EmbeddingGemma 2</strong>, <strong>BigQuery Vector Search</strong>, <strong>Cloud Run</strong>, and the <strong>Google Antigravity CLI (<code>agy</code>)</strong>.
+        </div>
+      </section>
+
+      <!-- STEP 1 -->
+      <section class="step-card" data-title="Overview of the application" data-mins="38">
+        <h2>2. Overview of the application</h2>
+        <img src="../assets/architecture_sovereign_flow.jpg" alt="SignBridge Sovereign Architecture Flow" />
+        <p>Every component runs inside your private Google Cloud boundary:</p>
+        <ul>
+          <li><strong><code>embedding_model/</code> (EmbeddingGemma 2 on Cloud Run):</strong> Generates 768-dimensional dense embeddings inside an IAM-protected container with pre-baked weights.</li>
+          <li><strong><code>vector_store/</code> (BigQuery Vector Search):</strong> Stores verified ASL &amp; PSL broadcast/corporate sign glosses, handshapes, and Non-Manual Facial Grammar, queried via <code>VECTOR_SEARCH(..., distance_type =&gt; 'COSINE')</code>.</li>
+          <li><strong><code>llm/</code> (Gemma 4 on Cloud Run):</strong> Serves open-weights <code>gemma4:e4b</code> via Ollama on NVIDIA L4 GPUs (or an automatic 8-vCPU / 16 GiB CPU fallback).</li>
+          <li><strong><code>orchestration/</code> (FastAPI + Side-by-Side Web UI):</strong> Displays Ungrounded LLM vs. Sovereign Grounded SignBridge side-by-side.</li>
+        </ul>
+      </section>
+
+      <!-- STEP 2 -->
+      <section class="step-card" data-title="Set up Cloud Shell and Antigravity CLI" data-mins="35">
+        <h2>3. Set up Cloud Shell and Antigravity CLI</h2>
+        <h3>Open Cloud Shell &amp; Enable Required APIs</h3>
+        <pre>export PROJECT_ID="YOUR_PROJECT_ID"
+export REGION="europe-west1"
+
+gcloud config set project "${PROJECT_ID}"
+
+gcloud services enable \
+  run.googleapis.com \
+  cloudbuild.googleapis.com \
+  artifactregistry.googleapis.com \
+  bigquery.googleapis.com \
+  compute.googleapis.com \
+  iam.googleapis.com \
+  --project="${PROJECT_ID}"</pre>
+
+        <h3>Launch Google Antigravity CLI</h3>
+        <pre>agy --help
+agy</pre>
+        <div class="callout tip">
+          <strong>Pro Tip:</strong> Inside <code>agy</code>, run <code>/help</code> to view interactive agent commands like <code>/grill-me</code> and <code>/plan</code>.
+        </div>
+      </section>
+
+      <!-- STEP 3 -->
+      <section class="step-card" data-title="Plan the architecture with Antigravity" data-mins="30">
+        <h2>4. Plan the architecture with Antigravity</h2>
+        <h3>Step 1: Inspect Regional Cloud Run GPU Quota</h3>
+        <pre>gcloud compute regions describe "${REGION}" \
+  --project="${PROJECT_ID}" \
+  --format="json(quotas)"</pre>
+
+        <h3>Step 2: Submit the <code>/grill-me</code> Architecture Prompt</h3>
+        <pre>/grill-me We are building SignBridge, a Sovereign Sign-Language RAG system on Google Cloud for TV newsrooms and corporate town halls where pre-broadcast scripts must never leave our GCP project.
+Stack:
+1. EmbeddingGemma 2 on private Cloud Run
+2. BigQuery Vector Search (COSINE) storing ASL &amp; PSL broadcast sign glosses, handshapes, and Non-Manual Facial Grammar [NMM]
+3. Open-weights Gemma 4 via Ollama on private Cloud Run (NVIDIA L4 GPU if quota &gt;= 1, else 8-vCPU / 16Gi fallback)
+4. Public FastAPI Cloud Run Web UI showing Side-by-Side Ungrounded LLM vs. Sovereign Grounded RAG.
+Interview me on authentication boundaries, cold-start mitigation, and BigQuery schema choices before producing our implementation plan.</pre>
+
+        <div class="callout warn">
+          <strong>Zero GPU Quota?</strong> If your project has <code>0</code> NVIDIA L4 quota, <code>llm/cloud_run.sh</code> automatically switches to <code>--cpu=8 --memory=16Gi</code> so your deployment succeeds seamlessly!
+        </div>
+      </section>
+
+      <!-- STEP 4 -->
+      <section class="step-card" data-title="Generate the RAG application" data-mins="24">
+        <h2>5. Generate the RAG application</h2>
+        <img src="../assets/hero_signbridge_sovereign_rag.jpg" alt="Robina Mirbahar — SignBridge Sovereign RAG" />
+        <pre>git clone https://github.com/RobinaMirbahar/signbridge-sovereign-rag-agy.git
+cd signbridge-sovereign-rag-agy
+chmod +x setup_env.sh embedding_model/cloud_run.sh llm/cloud_run.sh orchestration/cloud_run.sh cleanup.sh</pre>
+
+        <h3>Run Automated Verification Tests</h3>
+        <pre>uv run --with pytest --with fastapi --with httpx pytest tests/test_signbridge.py -v</pre>
+      </section>
+
+      <!-- STEP 5 -->
+      <section class="step-card" data-title="Deploy and verify the application" data-mins="18">
+        <h2>6. Deploy and verify the application</h2>
+        <p>Deploy the three serverless Cloud Run microservices and initialize BigQuery Vector Search:</p>
+        <pre>source ./setup_env.sh
+
+# 1. Deploy Sovereign EmbeddingGemma 2
+(cd embedding_model &amp;&amp; ./cloud_run.sh)
+
+# 2. Initialize BigQuery Vector Search &amp; Ingest Broadcast/Corporate Sign Corpus
+export EMBEDDING_SERVICE_URL=$(gcloud run services describe signbridge-embeddinggemma \
+  --project="${PROJECT_ID}" --region="${REGION}" --format="value(status.url)")
+python3 vector_store/init_db.py
+
+# 3. Deploy Open-Weights Gemma 4 (Auto L4 GPU or 8-vCPU Fallback)
+(cd llm &amp;&amp; ./cloud_run.sh)
+
+# 4. Deploy Public Side-by-Side Web UI
+./orchestration/cloud_run.sh</pre>
+      </section>
+
+      <!-- STEP 6 -->
+      <section class="step-card" data-title="Test the side-by-side Web UI and explore extensions" data-mins="8">
+        <h2>7. Test the side-by-side Web UI and explore extensions</h2>
+        <img src="../assets/signbridge_real_signs_grid.jpg" alt="SignBridge 6-Card ASL Sign Grid" />
+        <p>Open the live Cloud Run URL printed by <code>./orchestration/cloud_run.sh</code> and test:</p>
+        <ol>
+          <li><strong>📺 Breaking News Flood Ticker:</strong> Verify spatial rising-wave classifier <code>[CL:5-rising-wave]</code> vs. literal English camera-flash error.</li>
+          <li><strong>🏢 Embargoed Corporate Earnings &amp; M&amp;A:</strong> Confirm zero external egress + explicit negation timing on <em>"zero layoffs"</em>.</li>
+          <li><strong>📈 Financial TV Desk (PSL 150 bps):</strong> Switch filter to <code>PSL</code> and inspect broadcast style-guide conversion.</li>
+          <li><strong>🎙️ Press Briefing Idiom Trap:</strong> Test <em>"off the record"</em> and verify <code>PUBLIC ANNOUNCE FORBID</code> grounding.</li>
+        </ol>
+      </section>
+
+      <!-- STEP 7 -->
+      <section class="step-card" data-title="Clean up resources" data-mins="3">
+        <h2>8. Clean up resources</h2>
+        <p>Tear down all Cloud Run services and the BigQuery dataset to avoid ongoing charges:</p>
+        <pre>./cleanup.sh</pre>
+      </section>
+
+      <!-- STEP 8 -->
+      <section class="step-card" data-title="Congratulations" data-mins="1">
+        <h2>9. Congratulations! 🎉</h2>
+        <p>You have built, verified, and deployed <strong>SignBridge Sovereign RAG</strong> using <strong>Gemma 4</strong>, <strong>EmbeddingGemma 2</strong>, <strong>BigQuery Vector Search</strong>, <strong>Cloud Run</strong>, and <strong>Google Antigravity</strong>!</p>
+        <div class="callout tip">
+          <strong>Next Steps:</strong> Connect your newsroom teleprompter (MOS/ENPS) or corporate livestream captioning webhook to <code>/api/compare</code> to empower Deaf interpreters and viewers in real time!
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const cards = Array.from(document.querySelectorAll('.step-card'));
+    const sidebar = document.getElementById('sidebar');
+    const timeBadge = document.getElementById('timeRemaining');
+    let current = 0;
+
+    function goTo(idx) {
+      if (idx < 0 || idx >= cards.length) return;
+      current = idx;
+      cards.forEach((c, i) => c.classList.toggle('active', i === current));
+      Array.from(sidebar.children).forEach((n, i) => n.classList.toggle('active', i === current));
+      timeBadge.textContent = `⏱️ ${cards[current].dataset.mins} mins remaining`;
+      window.location.hash = `#${current}`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    cards.forEach((card, i) => {
+      const nav = document.createElement('div');
+      nav.className = 'step-nav' + (i === 0 ? ' active' : '');
+      nav.innerHTML = `<span class="step-num">${i + 1}</span><span>${card.dataset.title}</span>`;
+      nav.onclick = () => goTo(i);
+      sidebar.appendChild(nav);
+
+      const footer = document.createElement('div');
+      footer.className = 'nav-footer';
+      footer.innerHTML = `
+        <button class="btn" style="visibility:${i === 0 ? 'hidden' : 'visible'}" onclick="goTo(${i - 1})">← Back</button>
+        <button class="btn primary" style="visibility:${i === cards.length - 1 ? 'hidden' : 'visible'}" onclick="goTo(${i + 1})">Next →</button>
+      `;
+      card.appendChild(footer);
+    });
+
+    const hashIdx = parseInt(window.location.hash.replace('#', ''), 10);
+    if (!isNaN(hashIdx) && hashIdx >= 0 && hashIdx < cards.length) goTo(hashIdx);
+  </script>
+</body>
+</html>

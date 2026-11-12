@@ -1,0 +1,309 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Build and Deploy a Sovereign Sign-Language RAG System with Gemma 4 and Antigravity</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="signbridge-rag-agy"
+                  title="Build and Deploy a Sovereign Sign-Language RAG System with Gemma 4 and Antigravity"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="5">
+        <p class="image-container"><img alt="SignBridge Sequential Sign-Language Banner" src="img\\8c260c48b01e06a1.jpg"></p>
+<h2 is-upgraded>Why SignBridge Was Built (The 3 Critical Gaps in Media &amp; Enterprise Accessibility)</h2>
+<p>SignBridge was built to solve an urgent gap faced by <strong>television news channels, digital media studios, and corporate enterprises</strong> trying to make live broadcasts and internal communications accessible to over <strong>70 million Deaf Sign Language users worldwide</strong>:</p>
+<ol type="1">
+<li><strong>The Live-Air Time Crunch:</strong> In a breaking TV newsroom or live corporate Q&amp;A, teleprompter scripts change <strong>seconds before broadcast</strong>. In-studio Deaf interpreters (CDIs) and accessibility producers have no safe way to instantly verify complex financial (<code>150 basis points</code>), legal (<code>NDA</code>), emergency (<code>flash flood</code>), or medical terminology across regional sign languages (<strong>ASL, PSL — Pakistan Sign Language, BSL</strong>).</li>
+<li><strong>Why Generic AI Fails Sign Language:</strong> Sign languages are <strong>not</strong> English on the hands—they use spatial 3D <strong>Topic-Comment</strong> grammar, visual classifiers, and mandatory <strong>Non-Manual Facial Grammar (</strong><strong><code>[brow-raise]</code></strong><strong>, </strong><strong><code>[brow-furrow]</code></strong><strong>, </strong><strong><code>[head-shake]</code></strong><strong>)</strong>. Off-the-shelf ungrounded LLMs translate English idioms word-for-word (<em>&#34;off the record&#34;</em> becomes <em>&#34;music vinyl record off table&#34;</em>; <em>&#34;fast 8 hours&#34;</em> becomes <em>&#34;run quickly&#34;</em>), causing severe misinformation on live television.</li>
+<li><strong>Strict Newsroom Embargoes &amp; Corporate Sovereignty:</strong> Pre-announcement quarterly earnings, M&amp;A town halls, investigative journalism scripts, and HIPAA/ADA briefings contain <strong>Material Non-Public Information (MNPI)</strong>. Media networks and corporations <strong>cannot legally send</strong> embargoed scripts to external public AI APIs. SignBridge solves this by keeping <strong>Gemma 4</strong>, <strong>EmbeddingGemma 2</strong>, and <strong>BigQuery Vector Search 100% inside your private Google Cloud project</strong>.</li>
+</ol>
+<p class="image-container"><img alt="Side-by-Side Ungrounded vs Sovereign Grounded Sign-Language RAG" src="img\\9f0a92cd95129e6d.jpg"></p>
+<h2 is-upgraded>Why RAG vs. Non-RAG Matters on Live Air &amp; Corporate Stages</h2>
+<table>
+<tr><td colspan="1" rowspan="1"><p>Scenario</p>
+</td><td colspan="1" rowspan="1"><p>❌ Non-RAG (Ungrounded LLM)</p>
+</td><td colspan="1" rowspan="1"><p>✅ Sovereign RAG (<code>SignBridge</code>)</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Breaking Flood Ticker: </strong><em>&#34;Flash flood evacuation—move to high ground&#34;</em></p>
+</td><td colspan="1" rowspan="1"><p>Signs literal English <code>CAMERA-FLASH</code> + <code>DIRT-FLOOR</code>, confusing Deaf viewers during an emergency</p>
+</td><td colspan="1" rowspan="1"><p>Retrieves verified Broadcast Gloss <code>WATER-RISE [CL:5-wave] EVACUATE HIGH-LAND GO-NOW</code> + urgent NMM</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Press Briefing: </strong><em>&#34;This statement is off the record until 9 AM&#34;</em></p>
+</td><td colspan="1" rowspan="1"><p>Translates idiom literally as <code>VINYL MUSIC RECORD OFF-TABLE</code> on live air</p>
+</td><td colspan="1" rowspan="1"><p>Retrieves journalistic lexicon <code>[SL-MEDIA-004]</code>: <code>PUBLIC ANNOUNCE FORBID — LOCK-HOLD SECRET UNTIL 9 AM</code></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Financial TV Desk (PSL): </strong><em>&#34;Central Bank cut rates by 150 basis points&#34;</em></p>
+</td><td colspan="1" rowspan="1"><p>Outputs unintelligible <code>150 BASE DOTS</code></p>
+</td><td colspan="1" rowspan="1"><p>Converts via broadcast style guide <code>[SL-MEDIA-003]</code> to visual <code>1.5-PERCENT CUT-DOWN</code> + inflation contrast</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>Corporate M&amp;A Town Hall: </strong><em>&#34;Zero layoffs during the merger&#34;</em></p>
+</td><td colspan="1" rowspan="1"><p>Leaks confidential M&amp;A script externally &amp; drops negation timing</p>
+</td><td colspan="1" rowspan="1"><p>Runs <strong>100% inside private GCP project</strong>; enforces emphatic <code>[double-O-head-shake]</code> negation timing</p>
+</td></tr>
+</table>
+<h2 is-upgraded>Who Can Use SignBridge &amp; How They Use It in Production</h2>
+<ol type="1">
+<li><strong>📺 TV News Channels &amp; Live Broadcast Desks — </strong><strong><em>How They Use It:</em></strong><ul>
+<li>News producers connect their newsroom teleprompter system (ENPS / iNEWS / webhook) to SignBridge&#39;s private <code>/api/compare</code> Cloud Run endpoint. As breaking tickers are typed, verified ASL/PSL Gloss Cards + Classifier cues + Facial Grammar tags appear directly on the studio interpreter&#39;s confidence monitor before the anchor speaks.</li>
+</ul>
+</li>
+<li><strong>🏢 Corporate Enterprises, Investor Relations &amp; HR — </strong><strong><em>How They Use It:</em></strong><ul>
+<li>Executive Comms and IR teams paste pre-announcement CEO town hall speeches, quarterly earnings scripts, or HR/NDA policies into the sovereign SignBridge portal inside their corporate GCP boundary to generate audited <strong>Interpreter Prep Packets</strong> 24 hours before global livestreams—with zero external data leakage.</li>
+</ul>
+</li>
+<li><strong>🎬 Digital Media Houses, OTT Platforms &amp; Studios — </strong><strong><em>How They Use It:</em></strong><ul>
+<li>Production teams upload their network&#39;s approved <strong>Regional Sign Style Guide</strong> (e.g., PSL financial/civic terms or ASL STEM terms) into BigQuery Vector Search via <code>vector_store/init_db.py</code>, ensuring every episode, documentary, and social clip uses consistent, culturally accurate signs.</li>
+</ul>
+</li>
+<li><strong>🎓 Interpreter Training &amp; Broadcast QA Teams — </strong><strong><em>How They Use It:</em></strong><ul>
+<li>Accessibility leads use the <strong>Side-by-Side Web UI</strong> as an interactive training simulator to spot literal-English idiom traps and verify Non-Manual Facial Grammar before new interpreters go live on camera.</li>
+</ul>
+</li>
+</ol>
+<h2 is-upgraded>What You&#39;ll Do</h2>
+<ul>
+<li>Set up <strong>Google Cloud Shell</strong> and launch the <strong>Google Antigravity CLI (</strong><strong><code>agy</code></strong><strong>)</strong>.</li>
+<li>Use Antigravity&#39;s interactive <code>/grill-me</code> command to inspect GPU quotas and refine your sovereign serverless architecture.</li>
+<li>Deploy <strong>EmbeddingGemma 2</strong> (<code>768-d</code> dense embeddings) and <strong>BigQuery Vector Search</strong> (<code>VECTOR_SEARCH</code> with <code>COSINE</code> distance).</li>
+<li>Deploy open-weights <strong>Gemma 4</strong> on <strong>Cloud Run</strong> (with automatic NVIDIA L4 GPU detection + CPU fallback).</li>
+<li>Test the <strong>Side-by-Side Broadcast &amp; Corporate Comparison Web UI</strong> on Cloud Run.</li>
+</ul>
+<h2 is-upgraded>What You&#39;ll Need</h2>
+<ul>
+<li>A Google Cloud project with billing enabled.</li>
+<li>Access to Google Cloud Shell (or a local terminal with <code>gcloud</code> and <code>agy</code> installed).</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Overview of the Application" duration="3">
+        <p class="image-container"><img alt="SignBridge Sovereign Architecture inside Google Cloud Boundary" src="img\\f686309dd03fe8c1.jpg"></p>
+<p>SignBridge is composed of <strong>four sovereign components</strong> running entirely inside your Google Cloud project boundary:</p>
+<ol type="1">
+<li><strong><code>embedding_model/</code></strong><strong> (</strong><strong><code>EmbeddingGemma 2</code></strong><strong> on Cloud Run):</strong> Converts broadcast style guides, corporate glossary rules, and live teleprompter prompts into 768-dimensional vectors using <code>embeddinggemma</code>—with zero external API calls.</li>
+<li><strong><code>vector_store/</code></strong><strong> (</strong><strong><code>BigQuery Vector Search</code></strong><strong>):</strong> Stores your organization&#39;s verified ASL &amp; PSL sign-language lexicon (<code>sign_lexicon_embeddings</code>) and executes low-latency <code>VECTOR_SEARCH(..., distance_type => 'COSINE')</code> queries.</li>
+<li><strong><code>llm/</code></strong><strong> (</strong><strong><code>Gemma 4</code></strong><strong> Open-Weights on Cloud Run):</strong> Hosts open-weights <code>gemma4:e4b</code> via Ollama inside a private <code>--no-allow-unauthenticated</code> Cloud Run service (accelerating on an NVIDIA L4 GPU when quota is available, or seamlessly falling back to an 8-vCPU / 16 GiB CPU tier).</li>
+<li><strong><code>orchestration/</code></strong><strong> (</strong><strong><code>FastAPI</code></strong><strong> + Side-by-Side Web UI on Cloud Run):</strong> Connects live user prompts to EmbeddingGemma 2, BigQuery Vector Search, and Gemma 4—rendering a side-by-side comparison between an <strong>Ungrounded Baseline LLM</strong> and <strong>SignBridge Sovereign RAG</strong>.</li>
+</ol>
+<pre><code language="language-text" class="language-text">signbridge-sovereign-rag-agy/
+├── assets/                # Custom Codelab &amp; UI illustrations
+├── embedding_model/       # EmbeddingGemma 2 Cloud Run service (Dockerfile, app.py, cloud_run.sh)
+├── llm/                   # Sovereign Gemma 4 Cloud Run service (GPU + CPU fallback)
+├── orchestration/         # FastAPI backend + Side-by-Side Broadcast/Corporate Web UI
+├── vector_store/          # BigQuery Vector Search DDL, corpus JSON &amp; init_db.py
+├── tests/                 # Automated pytest verification suite
+├── setup_env.sh           # Project &amp; API initialization script
+└── cleanup.sh             # One-command resource teardown
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Set up Cloud Shell and Antigravity CLI" duration="5">
+        <h2 is-upgraded>Open Cloud Shell</h2>
+<ol type="1">
+<li>Open the <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a>.</li>
+<li>Click <strong>Activate Cloud Shell</strong> in the top-right toolbar.</li>
+</ol>
+<h2 is-upgraded>Set Your Project and Enable Required APIs</h2>
+<p>Run the following commands in Cloud Shell to configure your active project and enable Cloud Run, Cloud Build, Artifact Registry, and BigQuery:</p>
+<pre><code language="language-bash" class="language-bash">export PROJECT_ID=&#34;YOUR_PROJECT_ID&#34;
+export REGION=&#34;europe-west1&#34;
+
+gcloud config set project &#34;${PROJECT_ID}&#34;
+
+gcloud services enable \
+  run.googleapis.com \
+  cloudbuild.googleapis.com \
+  artifactregistry.googleapis.com \
+  bigquery.googleapis.com \
+  compute.googleapis.com \
+  iam.googleapis.com \
+  --project=&#34;${PROJECT_ID}&#34;
+</code></pre>
+<h2 is-upgraded>Install the Google Cloud Developer Plugin &amp; Launch Antigravity CLI</h2>
+<p>Verify that <strong>Antigravity CLI (</strong></p>
+<p><strong><code>agy</code></strong></p>
+<p><strong>)</strong> is ready in your shell environment and start an interactive session:</p>
+<pre><code language="language-bash" class="language-bash">agy --help
+agy
+</code></pre>
+<aside class="special"><p><strong>Tip:</strong> Inside the <code>agy</code> terminal interface, you can type <code>/help</code> at any time to inspect built-in slash commands such as <code>/grill-me</code>, <code>/plan</code>, and <code>/compact</code>.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Plan the Architecture with Antigravity" duration="6">
+        <p>Before writing or deploying infrastructure, let&#39;s have Antigravity inspect our regional Cloud Run GPU quota and interview us on sovereign security constraints.</p>
+<h2 is-upgraded>Step 1: Inspect Your Environment and GPU Quota</h2>
+<p>In a separate terminal tab (or via Antigravity), check whether your target region (<code>europe-west1</code>) currently has <code>NVIDIA_L4</code> GPU quota allocated:</p>
+<pre><code language="language-bash" class="language-bash">gcloud compute regions describe &#34;${REGION}&#34; \
+  --project=&#34;${PROJECT_ID}&#34; \
+  --format=&#34;json(quotas)&#34;
+</code></pre>
+<aside class="warning"><p><strong>No GPU Quota? No Problem!</strong> New Google Cloud projects often start with <code>0</code> regional GPU quota. Our <code>llm/cloud_run.sh</code> script automatically detects <code>limit=0</code> and falls back to an <strong>8 vCPU / 16 GiB RAM</strong> Cloud Run configuration so you can complete the entire Codelab without waiting for a quota increase!</p>
+</aside>
+<h2 is-upgraded>Step 2: Submit the <code>/grill-me</code> Architecture Prompt</h2>
+<p>Inside the <strong>Antigravity CLI (</strong></p>
+<p><strong><code>agy</code></strong></p>
+<p><strong>)</strong>, paste the following <code>/grill-me</code> prompt to align on architectural decisions before generating code:</p>
+<pre><code language="language-text" class="language-text">/grill-me We are building SignBridge, a Sovereign Sign-Language RAG system on Google Cloud for TV newsrooms and corporate town halls where pre-broadcast scripts must never leave our GCP project.
+Stack:
+1. EmbeddingGemma 2 on private Cloud Run
+2. BigQuery Vector Search (COSINE distance) storing ASL &amp; PSL broadcast sign glosses, handshapes, and Non-Manual Facial Grammar [NMM]
+3. Open-weights Gemma 4 via Ollama on private Cloud Run (NVIDIA L4 GPU if quota &gt;= 1, else 8-vCPU / 16Gi fallback)
+4. Public FastAPI Cloud Run Web UI showing Side-by-Side Ungrounded LLM vs. Sovereign Grounded RAG.
+Interview me on authentication boundaries, cold-start mitigation, and BigQuery schema choices before producing our implementation plan.
+</code></pre>
+<h2 is-upgraded>Interactive Q&amp;A &amp; Reviewing the Implementation Plan</h2>
+<p>Answer Antigravity&#39;s clarifying questions:</p>
+<ul>
+<li><strong>Model Weights:</strong> Pre-bake <code>embeddinggemma</code> and <code>gemma4:e4b</code> inside the container build step so runtime containers need zero outbound internet downloads.</li>
+<li><strong>Service-to-Service Security:</strong> Deploy <code>embedding_model</code> and <code>llm</code> with <code>--no-allow-unauthenticated</code>; only the <code>orchestration</code> UI service is publicly reachable.</li>
+<li><strong>Chunk Structure:</strong> Store structured columns (<code>verified_gloss</code>, <code>handshape</code>, <code>non_manual_markers</code>, <code>privacy_tier</code>) alongside <code>embedding ARRAY<FLOAT64></code> in BigQuery so retrieved citations are deterministic and auditable.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Generate the RAG Application" duration="6">
+        <p class="image-container"><img alt="SignBridge Sovereign RAG Hero" src="img\\835f46d24584b384.jpg"></p>
+<p>Clone or generate the <code>signbridge-sovereign-rag-agy</code> workspace and explore the four core modules:</p>
+<pre><code language="language-bash" class="language-bash">git clone https://github.com/RobinaMirbahar/signbridge-sovereign-rag-agy.git
+cd signbridge-sovereign-rag-agy
+chmod +x setup_env.sh embedding_model/cloud_run.sh llm/cloud_run.sh orchestration/cloud_run.sh cleanup.sh
+</code></pre>
+<h2 is-upgraded>Explore the Generated Codebase</h2>
+<ol type="1">
+<li><strong>Broadcast &amp; Corporate Sign Corpus (</strong><strong><code>vector_store/sign_lexicon_corpus.json</code></strong><strong>):</strong> Contains curated ASL &amp; PSL entries covering breaking flood tickers (<code>SL-NEWS-001</code>), embargoed Q3 earnings &amp; M&amp;A town halls (<code>SL-CORP-002</code>), Central Bank 150 bps rate cuts (<code>SL-MEDIA-003</code>), press-room <em>&#34;off the record&#34;</em> idioms (<code>SL-MEDIA-004</code>), and HIPAA/ADA protocols.</li>
+<li><strong>BigQuery Vector Search Query (</strong><strong><code>vector_store/init_db.py</code></strong><strong>):</strong> Uses native <code>VECTOR_SEARCH</code> with <code>COSINE</code> distance: <pre><code language="language-sql" class="language-sql">SELECT base.doc_id, base.verified_gloss, base.non_manual_markers, distance
+FROM VECTOR_SEARCH(
+  TABLE `PROJECT.signbridge_sovereign_rag.sign_lexicon_embeddings`,
+  &#39;embedding&#39;,
+  (SELECT @query_embedding AS embedding),
+  top_k =&gt; 3,
+  distance_type =&gt; &#39;COSINE&#39;
+)
+ORDER BY distance ASC;
+</code></pre>
+</li>
+<li><strong>Orchestrator (</strong><strong><code>orchestration/app.py</code></strong><strong>):</strong> Queries both an ungrounded prompt and a BigQuery-grounded prompt in parallel so producers and interpreters can visually verify why grounding prevents broadcast errors.</li>
+</ol>
+<h2 is-upgraded>Run Local Automated Verification First</h2>
+<p>Before deploying to Cloud Run, run the automated <code>pytest</code> verification suite:</p>
+<pre><code language="language-bash" class="language-bash">uv run --with pytest --with fastapi --with httpx pytest tests/test_signbridge.py -v
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Deploy and Verify the Application" duration="10">
+        <p>Now deploy the complete Sovereign Sign-Language RAG stack onto Google Cloud Run!</p>
+<h2 is-upgraded>1. Initialize Project &amp; APIs</h2>
+<pre><code language="language-bash" class="language-bash">source ./setup_env.sh
+</code></pre>
+<h2 is-upgraded>2. Deploy the Sovereign <code>EmbeddingGemma 2</code> Service</h2>
+<pre><code language="language-bash" class="language-bash">(cd embedding_model &amp;&amp; ./cloud_run.sh)
+</code></pre>
+<h2 is-upgraded>3. Initialize BigQuery Vector Search &amp; Ingest Sign Lexicon</h2>
+<pre><code language="language-bash" class="language-bash">export EMBEDDING_SERVICE_URL=$(gcloud run services describe signbridge-embeddinggemma \
+  --project=&#34;${PROJECT_ID}&#34; --region=&#34;${REGION}&#34; --format=&#34;value(status.url)&#34;)
+
+python3 vector_store/init_db.py
+</code></pre>
+<h2 is-upgraded>4. Deploy Open-Weights <code>Gemma 4</code> (Auto GPU / CPU Fallback)</h2>
+<pre><code language="language-bash" class="language-bash">(cd llm &amp;&amp; ./cloud_run.sh)
+</code></pre>
+<h2 is-upgraded>5. Deploy the FastAPI Orchestrator &amp; Side-by-Side Web UI</h2>
+<pre><code language="language-bash" class="language-bash">./orchestration/cloud_run.sh
+</code></pre>
+<h2 is-upgraded>What Happens During Deployment</h2>
+<ul>
+<li><strong>Cloud Build</strong> packages each microservice and pre-pulls the open-weights <code>embeddinggemma</code> and <code>gemma4:e4b</code> weights directly into your private <strong>Artifact Registry</strong> image.</li>
+<li><strong>BigQuery</strong> creates the <code>signbridge_sovereign_rag.sign_lexicon_embeddings</code> table inside <code>europe-west1</code> and indexes all 768-dimensional vectors.</li>
+<li><strong>Cloud Run</strong> outputs your live <code>https://signbridge-rag-ui-...run.app</code> URL!</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Test the Side-by-Side Web UI and Explore Extensions" duration="5">
+        <p class="image-container"><img alt="SignBridge Verified ASL Gesture Cards" src="img\\74f91bd7fcafefb5.jpg"></p>
+<p>Open the <code>SignBridge Side-by-Side Web UI Live URL</code> printed at the end of <code>./orchestration/cloud_run.sh</code> in your browser!</p>
+<h2 is-upgraded>Test These 4 Broadcast &amp; Corporate Scenarios</h2>
+<ol type="1">
+<li><strong>📺 Breaking News Flood Ticker:</strong> Click <em>&#34;Breaking News Flood Ticker&#34;</em>. Notice how the Ungrounded LLM outputs literal word-for-word English (<code>FLASH FLOOD...</code>), whereas <strong>SignBridge Sovereign RAG</strong> retrieves <code>[SL-NEWS-001]</code> with the rising-wave classifier <code>[CL:5-rising-wave]</code> and urgent facial grammar <code>[intense-eyes, lean-forward]</code>.</li>
+<li><strong>🏢 Embargoed Corporate Earnings &amp; M&amp;A:</strong> Click <em>&#34;Embargoed Corporate Earnings &amp; M&amp;A&#34;</em>. Verify that confidential Q3 revenue and <em>&#34;zero layoffs&#34;</em> stay inside your GCP project and enforce <code>[double-O-head-shake]</code> negation timing (<code>[SL-CORP-002]</code>).</li>
+<li><strong>📈 Financial TV Desk (PSL 150 bps):</strong> Select <code>PSL (Pakistan Sign Language)</code> and test <em>&#34;Central Bank cut interest rates by 150 basis points&#34;</em>. Watch SignBridge convert abstract financial jargon into broadcast-clear PSL spatial contrast (<code>[SL-MEDIA-003]</code>).</li>
+<li><strong>🎙️ Press Briefing Idiom Trap:</strong> Test <em>&#34;This statement is off the record until 9:00 AM tomorrow&#34;</em> and confirm SignBridge avoids the classic <em>&#34;vinyl record&#34;</em> hallucination (<code>[SL-MEDIA-004]</code>).</li>
+</ol>
+<h2 is-upgraded>Production Extensions for Media &amp; Enterprise Teams</h2>
+<ul>
+<li><strong>Live Newsroom MOS / Teleprompter Webhook:</strong> Connect ENPS or iNEWS teleprompter feeds directly to <code>/api/compare</code> so in-studio Deaf interpreters see verified gloss cards on a confidence monitor in real time.</li>
+<li><strong>VPC Service Controls:</strong> Wrap BigQuery and Cloud Run inside a <strong>VPC Service Controls</strong> perimeter for mathematically enforced zero data exfiltration.</li>
+<li><strong>3D Avatar &amp; Pose Keypoint Lookup:</strong> Attach verified WLASL / PSL skeletal keypoint clips alongside each <code>doc_id</code> in BigQuery!</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Clean Up Resources" duration="2">
+        <p>To avoid incurring ongoing Google Cloud charges after completing the Codelab, run the cleanup script to delete the three Cloud Run services and the BigQuery dataset:</p>
+<pre><code language="language-bash" class="language-bash">./cleanup.sh
+</code></pre>
+<p>Or delete them manually using <code>gcloud</code> and <code>bq</code>:</p>
+<pre><code language="language-bash" class="language-bash">gcloud run services delete signbridge-rag-ui --project=&#34;${PROJECT_ID}&#34; --region=&#34;${REGION}&#34; --quiet
+gcloud run services delete signbridge-gemma4-llm --project=&#34;${PROJECT_ID}&#34; --region=&#34;${REGION}&#34; --quiet
+gcloud run services delete signbridge-embeddinggemma --project=&#34;${PROJECT_ID}&#34; --region=&#34;${REGION}&#34; --quiet
+bq rm -r -f -d &#34;${PROJECT_ID}:signbridge_sovereign_rag&#34;
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Congratulations!" duration="1">
+        <p>🎉 <strong>Congratulations!</strong> You have architected, verified, and deployed a <strong>Sovereign Sign-Language RAG System (</strong></p>
+<p><strong><code>SignBridge</code></strong></p>
+<p><strong>)</strong> on Google Cloud!</p>
+<h2 is-upgraded>What You Accomplished</h2>
+<ul>
+<li>Planned a privacy-first serverless RAG architecture using <strong>Google Antigravity CLI (</strong><strong><code>agy</code></strong><strong>)</strong> and <code>/grill-me</code>.</li>
+<li>Generated sovereign <strong>768-d vector embeddings</strong> with <strong>EmbeddingGemma 2</strong> and indexed them in <strong>BigQuery Vector Search</strong>.</li>
+<li>Deployed open-weights <strong>Gemma 4</strong> on <strong>Google Cloud Run</strong> with automatic NVIDIA L4 GPU detection and CPU fallback.</li>
+<li>Built a <strong>Side-by-Side Broadcast Media &amp; Corporate Accessibility Copilot</strong> that eliminates sign-language idiom hallucinations while keeping embargoed scripts 100% inside your cloud boundary!</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
