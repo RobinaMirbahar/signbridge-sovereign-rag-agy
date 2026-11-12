@@ -141,6 +141,15 @@ agy
 
 ![Initializing Your Fresh SignBridge Git Workspace in Cloud Shell](img/step3_mkdir_git_init.jpg)
 
+Antigravity CLI (`agy`) detects your Cloud Shell Linux environment (`linux_amd64`), downloads the latest release package, and launches the interactive colorful welcome screen:
+
+![Installing Antigravity CLI in Google Cloud Shell](img/step3_install_agy.jpg)
+
+### Sign In to Antigravity CLI
+On first launch, `agy` prompts you to choose a login method (`1. Google OAuth` or `2. Use a Google Cloud project`). Select **`1. Google OAuth`** (press **Enter**) or **`2. Use a Google Cloud project`** (`cloud-champion-innovator` / your own Project ID) and follow the on-screen sign-in flow:
+
+![Antigravity CLI Welcome and Login Method Screen](img/step3_agy_login.png)
+
 > aside positive
 > **Tip:** Inside the `agy` terminal interface, you can type `/help` at any time to inspect built-in slash commands such as `/grill-me`, `/plan`, and `/compact`.
 
