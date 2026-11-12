@@ -380,6 +380,12 @@ gcloud run services delete signbridge-gemma4-llm --project=&#34;${PROJECT_ID}&#3
 gcloud run services delete signbridge-embeddinggemma --project=&#34;${PROJECT_ID}&#34; --region=&#34;${REGION}&#34; --quiet
 bq rm -r -f -d &#34;${PROJECT_ID}:signbridge_sovereign_rag&#34;
 </code></pre>
+<p>If you run resource cleanup through <strong>Antigravity (</strong></p>
+<p><strong><code>agy</code></strong></p>
+<p><strong>)</strong>, notice how its <strong>accidental-data-loss and </strong></p>
+<p><strong><code>gcloud</code></strong></p>
+<p><strong> safety guardrails</strong> explicitly verify your authorization before executing any <code>gcloud run services delete</code> or <code>bq rm</code> operation:</p>
+<p class="image-container"><img alt="Antigravity CLI Destructive Operation Guardrail During Step 8 Cleanup" src="img\\b76f07741024b6ef.jpg"></p>
 
 
       </google-codelab-step>
