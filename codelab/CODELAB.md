@@ -327,6 +327,10 @@ Now deploy the complete Sovereign Sign-Language RAG stack onto Google Cloud Run!
 
 ![Antigravity CLI Human-in-the-Loop IAM Safety Guardrail During Cloud Run Deployment](img/step6_iam_approval_guardrail.jpg)
 
+Antigravity also scopes least-privilege **BigQuery dataset access (`roles/bigquery.dataViewer`)** directly onto your `signbridge_rag` schema for `signbridge-ui-sa`, pausing for your review before executing the SQL `GRANT`:
+
+![Scoping Least-Privilege BigQuery Schema Roles to the SignBridge Service Account](img/step6_bq_schema_grant_guardrail.jpg)
+
 ### 1. Initialize Project & APIs
 ```bash
 source ./setup_env.sh
