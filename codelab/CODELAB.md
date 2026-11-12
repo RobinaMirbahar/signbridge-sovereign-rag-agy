@@ -384,6 +384,12 @@ Switch to **`PSL · Pakistan Sign Language`** (or keep `ASL`) and click **`Run S
 
 ![Live BigQuery VECTOR_SEARCH PSL Ground Truth Lexicon Cards on Cloud Run](img/step7_psl_bigquery_ground_truth.jpg)
 
+Scroll down to inspect the **Side-by-Side Comparison** streaming live from `gemma4:e4b` on Cloud Run:
+* **Left (`UNGROUNDED BASELINE`):** Hallucinates English-order `FLASH FLOOD WARNING SEVERE LOW-LYING AREA EFFECT` and invents a wrong `F-handshape`!
+* **Right (`SOVEREIGN GROUNDED RAG`):** Grounds strictly in BigQuery `[ASL-WX-001]` (`0.1248`), enforcing `WATER FLOOD++ SUDDEN DANGER AREA LOW-TERRAIN WARNING`, exact `5-clawed -> S-hand` rising-surge articulation, obligatory `[mm: CHA, lean-fwd]` Non-Manual Facial Grammar, and picture-in-picture TV studio framing notes!
+
+![Live Side-by-Side Ungrounded Baseline vs. Sovereign Grounded SignBridge RAG on Cloud Run](img/step7_live_side_by_side_comparison.jpg)
+
 ### Test These 4 Broadcast & Corporate Scenarios
 1. **📺 Breaking News Flood Ticker:** Click *"Breaking News Flood Ticker"*. Notice how the Ungrounded LLM outputs literal word-for-word English (`FLASH FLOOD...`), whereas **SignBridge Sovereign RAG** retrieves `[SL-NEWS-001]` with the rising-wave classifier `[CL:5-rising-wave]` and urgent facial grammar `[intense-eyes, lean-forward]`.
 2. **🏢 Embargoed Corporate Earnings & M&A:** Click *"Embargoed Corporate Earnings & M&A"*. Verify that confidential Q3 revenue and *"zero layoffs"* stay inside your GCP project and enforce `[double-O-head-shake]` negation timing (`[SL-CORP-002]`).
