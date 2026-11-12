@@ -166,6 +166,10 @@ When prompted (`Do you trust the contents of this project?`), keep **`> Yes, I t
 
 ![Trusting Your SignBridge Workspace in Antigravity CLI](img/step3_agy_trust_workspace.png)
 
+Your **Antigravity CLI 1.5.7** interactive prompt (`>`) is now live and ready inside `~/signbridge-sovereign-rag`:
+
+![Antigravity CLI Ready Inside the SignBridge Workspace](img/step3_agy_ready.jpg)
+
 > aside positive
 > **Tip:** Inside the `agy` terminal interface, you can type `/help` at any time to inspect built-in slash commands such as `/grill-me`, `/plan`, and `/compact`.
 
