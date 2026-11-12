@@ -98,7 +98,11 @@ Duration: 5
 ![Authorize Google Cloud Shell](img/step3_cloudshell_authorize.png)
 
 ### Set Your Project and Enable Required APIs
-In Cloud Shell, `${GOOGLE_CLOUD_PROJECT}` automatically holds your active project ID (or replace it with your own project ID). Run the following commands to configure your session and enable Cloud Run, Cloud Build, Artifact Registry, and BigQuery:
+
+> aside positive
+> **Important — Replace with Your Own Project ID:** In the reference screenshots below, our demo Project ID is **`cloud-champion-innovator`**. When running the commands in your own Cloud Shell, replace `"cloud-champion-innovator"` with **your own Google Cloud Project ID** (or use `${GOOGLE_CLOUD_PROJECT}`, which automatically inserts your active Cloud Shell project ID).
+
+Run the following commands to configure your session and enable Cloud Run, Cloud Build, Artifact Registry, and BigQuery:
 
 ```bash
 export PROJECT_ID="${GOOGLE_CLOUD_PROJECT}"
@@ -116,6 +120,8 @@ gcloud services enable \
   --project="${PROJECT_ID}" \
   --quiet
 ```
+
+![Enabling Sovereign RAG APIs in Cloud Shell](img/step3_enable_apis.jpg)
 
 ### Install the Google Cloud Developer Plugin & Launch Antigravity CLI
 Verify that **Antigravity CLI (`agy`)** is ready in your shell environment and start an interactive session:

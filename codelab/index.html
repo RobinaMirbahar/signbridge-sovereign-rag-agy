@@ -178,6 +178,9 @@
         <img src="../assets/step3_cloudshell_provisioning.png" alt="Provisioning Cloud Shell" />
         <img src="../assets/step3_cloudshell_authorize.png" alt="Authorize Cloud Shell" />
         <h3>Set Your Active Project &amp; Enable Required APIs</h3>
+        <div class="callout info">
+          <strong>Important — Use Your Own Project ID:</strong> In the demo screenshots, our Project ID is <code>cloud-champion-innovator</code>. Be sure to replace it with <strong>your own Google Cloud Project ID</strong> (or leave <code>${GOOGLE_CLOUD_PROJECT}</code> to auto-detect your active Cloud Shell project).
+        </div>
         <pre>export PROJECT_ID="${GOOGLE_CLOUD_PROJECT}"
 export REGION="europe-west1"
 
@@ -192,6 +195,7 @@ gcloud services enable \
   iam.googleapis.com \
   --project="${PROJECT_ID}" \
   --quiet</pre>
+        <img src="../assets/step3_enable_apis.jpg" alt="Enabling APIs in Cloud Shell" />
 
         <h3>Launch Google Antigravity CLI</h3>
         <pre>agy --help
