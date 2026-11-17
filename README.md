@@ -91,3 +91,10 @@ python3 vector_store/init_db.py
 # 4. Tear down when finished so you pay $0 ongoing!
 ./cleanup.sh
 ```
+
+---
+
+### Official Google Developer Resources
+- [Google Antigravity Documentation](https://antigravity.google/?utm_campaign=deveco_gdemembers&utm_source=deveco)
+- [Google Gemma Open Models Documentation](https://ai.google.dev/gemma?utm_campaign=deveco_gdemembers&utm_source=deveco)
+- [Google Cloud BigQuery Documentation](https://cloud.google.com/bigquery/docs?utm_campaign=deveco_gdemembers&utm_source=deveco)
