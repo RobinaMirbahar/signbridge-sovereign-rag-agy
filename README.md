@@ -6,8 +6,11 @@
 >
 > **Serverless Sovereign Stack:** Open-Weights **Gemma 4** on Cloud Run (L4 GPU + Auto CPU Fallback) · **EmbeddingGemma 2** (`768-d`) · **BigQuery Vector Search** (`COSINE`) · **FastAPI Side-by-Side Web UI** · **Google Antigravity CLI (`agy` + `/grill-me`)**
 
----
+> **Author & Architect:** [Robina Mirbahar](https://github.com/RobinaMirbahar) ([Google Developer Expert in Cloud & AI](https://developers.google.com/profile/u/106918534005910641104?utm_campaign=deveco_gdemembers&utm_source=deveco) · Google Cloud Champion Innovator · Co-Author of [*AI Engineering*](https://www.amazon.com/dp/B0GWCZWCF4))  
+> 📚 **Architecture Track:** Google Cloud Sovereign Sign-Language RAG Codelab & Reference Architecture (signbridge-rag-agy#0)  
+> **Core Stack:** Open-Weights [Google Gemma 4](https://ai.google.dev/gemma/docs?utm_campaign=deveco_gdemembers&utm_source=deveco) on [Cloud Run L4 GPU](https://cloud.google.com/run/docs?utm_campaign=deveco_gdemembers&utm_source=deveco), EmbeddingGemma 2 (768-d), [BigQuery Vector Search](https://cloud.google.com/bigquery/docs/vector-search-intro?utm_campaign=deveco_gdemembers&utm_source=deveco) (COSINE), FastAPI, and [Google Antigravity](https://antigravity.google/?utm_campaign=deveco_gdemembers&utm_source=deveco).
 
+---
 ## 💡 1. Why SignBridge Was Built (The Problem We Solve)
 
 Television news channels, digital media studios, and multinational corporations struggle to make live broadcasts and confidential internal communications accessible to **70M+ Deaf Sign Language users** because of three critical gaps:
@@ -34,6 +37,34 @@ Television news channels, digital media studios, and multinational corporations 
 ## 🏗️ 3. Sovereign Serverless Architecture
 
 ![SignBridge Sovereign Architecture](assets/architecture_sovereign_flow.jpg)
+
+### 📐 Color-Coded Sovereign Sign-Language RAG Pipeline
+> *(🩷 Pink = Teleprompter / Embargoed Script Input | 💙 Blue = EmbeddingGemma 2 & Gemma 4 L4 GPU | 💚 Green = BigQuery Vector Search (COSINE) | 💜 Purple = Verified ASL/PSL Gloss & Facial Grammar Console)*
+
+```mermaid
+flowchart TD
+    subgraph In ["1. Newsroom Teleprompter / Corporate VPC Input"]
+        I_Script["Breaking News Ticker or Embargoed Executive Speech"]
+    end
+    subgraph Embed ["2. Sovereign Vector Encoding (Cloud Run)"]
+        E_Gemma["EmbeddingGemma 2 Microservice (768-d Embeddings)"]
+    end
+    subgraph BQ ["3. Sovereign Knowledge Base (Google BigQuery)"]
+        B_Vec["BigQuery Vector Search (COSINE)<br/>Verified ASL / PSL / BSL Gloss & Idiom Dictionary"]
+    end
+    subgraph Gen ["4. Grounded Sign-Language Copilot (Cloud Run L4 GPU)"]
+        G_LLM["Open-Weights Gemma 4 + Non-Manual Facial Grammar Rules"]
+        O_UI["Side-by-Side Interpreter Confidence Monitor<br/>(Topic-Comment Gloss + [brow-raise] / [head-shake] Cues)"]
+    end
+    I_Script --> E_Gemma --> B_Vec --> G_LLM --> O_UI
+
+    style I_Script fill:#fce7f3,stroke:#db2777,stroke-width:2px,color:#831843
+    style E_Gemma fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
+    style B_Vec fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+    style G_LLM fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
+    style O_UI fill:#f3e8ff,stroke:#9333ea,stroke-width:2px,color:#581c87
+```
+
 
 ```text
 signbridge-sovereign-rag-agy/
